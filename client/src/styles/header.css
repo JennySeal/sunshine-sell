@@ -1,0 +1,45 @@
+*           {margin: 0;
+            padding: 0;}
+header      
+            {font-family: 'Poppins', 'Lato', 'Helvetica', sans-serif;
+            height: 15vh;
+            width: 90vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;}
+#sunflowerPic   
+            {height: 25vh;}
+h1          
+            {color: orangered;
+            font-size: 4rem;}
+h2          
+            {font-family: 'Lato', sans-serif;
+            color: white;
+            line-height: 0.25rem;
+            font-size: 1.1rem;
+            padding: 1vw;
+            font-family: 'Poppins', 'Lato', sans-serif;
+}
+.columnFlex    
+            {display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;}
+
+.App-logo {
+           height: 25vh;
+           pointer-events: none;
+           padding-right: 5vw;
+           }
+
+@media (prefers-reduced-motion: no-preference) {
+           .App-logo {
+            animation: App-logo-spin infinite 20s linear;
+               }}
+
+@keyframes App-logo-spin {
+                from {
+                  transform: rotate(0deg);}
+                to {
+                  transform: rotate(360deg);}}

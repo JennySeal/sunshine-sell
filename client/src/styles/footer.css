@@ -1,0 +1,6 @@
+footer      {position: fixed;
+            bottom: 0;
+            width: 90vw;
+            text-align: right;
+            font-family: 'Poppins', 'Lato', sans-serif;
+}

@@ -1,0 +1,37 @@
+body {
+  background-color: white;
+  font-family: 'Poppins', 'Lato', sans-serif;
+}
+
+#mainContainer  {
+  width: 90vw;
+  min-height: 90vh;
+  margin: 5vh 5vw;
+  border-bottom-right-radius: 20px;
+  background-color: #ffcc00;
+  
+}
+
+nav   {background-color: darkslateblue;
+      display: inline-flex;
+      align-items: center;
+      border-bottom-right-radius: 20px;
+      justify-content: space-between;
+      height: 10vh;
+      box-shadow: 2px 2px 2px lightblue;}
+
+nav a {color: white;
+      text-decoration: none;
+      margin-right: 10vw;
+      font-family: 'Poppins', 'Lato', sans-serif;
+      }
+
+#shoppingBag  {height: 8vh;
+              padding: 1vw;}
+
+.innerContainer  {
+  width: 80vw;
+ margin: 2vw;
+padding: 1vh 1vw;
+  
+}
