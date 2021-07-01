@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     border: 0.5vw solid white;
-    width: 40vw;
+    width: 30vw;
     padding: 2vw;
     border-bottom-right-radius: 20px;
 }
@@ -13,7 +13,7 @@ button, #submit  {
     border: 0.5vw solid white;
     background-color: white;
     border-bottom-right-radius: 20px;
-    margin: 1vw;
+    margin: 0.5vw;
     color: #fff;
     box-shadow: 0 0 30px 30px darkslateblue inset, 0 0 0 0 darkslateblue;
     -webkit-transition: all 150ms ease-in-out;
@@ -24,16 +24,14 @@ button, #submit  {
     box-shadow: 0 0 10px 0 #ffcc00 inset, 0 0 10px 4px white;
     color: darkslateblue;
   }
-
-  label   {min-width: 20vw;}
   
   input   {
     padding: 0.5vw;
-    margin: 0.5vw;
-    margin-right: 1vw;
     border-bottom-right-radius: 10px;
 }
 
-
+#formfield      {display: flex;
+                flex-direction: row;
+                justify-content: space-between;}
 #capitalize   {text-transform: capitalize;}
 #uppercase   {text-transform: uppercase;}
