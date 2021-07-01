@@ -1,14 +1,10 @@
 const express = require('express')
+const cors = require('cors');
 const app = express()
 const db = require('./db/index')
 
 
-app.use(express.json())
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-)
+app.use(cors())
 
 app.get('/', (request, response) => {
   response.json({ info: `I really miss Miss Moneypenny` })
