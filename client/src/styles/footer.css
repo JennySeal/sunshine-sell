@@ -3,4 +3,5 @@ footer      {position: fixed;
             width: 90vw;
             text-align: right;
             font-family: 'Poppins', 'Lato', sans-serif;
+            background-color: white;
 }

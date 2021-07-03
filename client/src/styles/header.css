@@ -4,6 +4,8 @@ header
             {font-family: 'Poppins', 'Lato', 'Helvetica', sans-serif;
             height: 15vh;
             width: 90vw;
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -12,7 +14,8 @@ header
             {height: 25vh;}
 h1          
             {color: orangered;
-            font-size: 4rem;}
+            font-size: 4rem;
+            padding-left: 1vw;}
 h2          
             {font-family: 'Lato', sans-serif;
             color: white;

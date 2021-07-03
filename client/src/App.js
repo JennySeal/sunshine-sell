@@ -7,10 +7,9 @@ import Header from './components/Header';
 import Login from './components/Login';
 import Cart from './components/Cart';
 import Products from './components/Products';
+import ProductItem from './components/ProductItem';
 import Footer from './components/Footer';
 import FourOhFour from './components/FourOhFour';
-
-import CartIcon from './images/shoppingBagIcon.png';
 
 
 const App = () => {
@@ -20,8 +19,9 @@ const App = () => {
         <Header/>
             <nav>
             <Link to="/"><h2>The Eco-Friendly E-Commerce Store</h2></Link>
-            <Link to="/cart"><img src={CartIcon} alt="Shopping Bag Icon for Cart" id="shoppingBag"/></Link>
+            <Link to="/cart"><img src="images/shoppingBagIcon.png" alt="Shopping Bag Icon for Cart" id="shoppingBag"/></Link>
             <Link to="/login">Log In / Register</Link>
+  
             </nav>
         <Switch>
         <Route exact path="/">
@@ -40,6 +40,12 @@ const App = () => {
             <Login/>
             </div>
             </Route>
+
+        <Route path="/:id">
+        <div className='innerContainer'>
+        <ProductItem />
+        </div>
+        </Route>
 
         <Route path="/*">
         <div className='innerContainer'>

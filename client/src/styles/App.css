@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #3ded97;
   font-family: 'Poppins', 'Lato', sans-serif;
 }
 
@@ -7,18 +7,19 @@ body {
   width: 90vw;
   min-height: 90vh;
   margin: 5vh 5vw;
-  border-bottom-right-radius: 20px;
+  border-radius: 20px;
   background-color: #ffcc00;
+  
   
 }
 
-nav   {background-color: darkslateblue;
+nav   {background-color: orangered;
       display: inline-flex;
       align-items: center;
       border-bottom-right-radius: 20px;
       justify-content: space-between;
       height: 10vh;
-      box-shadow: 2px 2px 2px lightblue;}
+      box-shadow: 2px 2px 2px #3ded97;}
 
 nav a {color: white;
       text-decoration: none;
@@ -30,8 +31,6 @@ nav a {color: white;
               padding: 1vw;}
 
 .innerContainer  {
-  width: 80vw;
- margin: 2vw;
-padding: 1vh 1vw;
+  width: 90vw;
   
 }
