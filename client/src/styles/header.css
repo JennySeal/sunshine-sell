@@ -1,48 +1,61 @@
-*           {margin: 0;
-            padding: 0;}
-header      
-            {font-family: 'Poppins', 'Lato', 'Helvetica', sans-serif;
-            height: 15vh;
-            width: 90vw;
-            border-top-right-radius: 20px;
-            border-top-left-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: white;}
-#sunflowerPic   
-            {height: 25vh;}
-h1          
-            {color: orangered;
-            font-size: 4rem;
-            padding-left: 1vw;}
-h2          
-            {font-family: 'Lato', sans-serif;
-            color: white;
-            line-height: 0.25rem;
-            font-size: 1.1rem;
-            padding: 1vw;
-            font-family: 'Poppins', 'Lato', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
 }
-.columnFlex    
-            {display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;}
+header {
+  font-family: "Poppins", "Lato", "Helvetica", sans-serif;
+  height: 23vh;
+  width: 90vw;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(249, 253, 208);
+}
+h1 {
+  color: orangered;
+  font-size: 4rem;
+  padding-top: 0.5vw;
+  padding-left: 1vw;
+}
+h2 {
+  font-family: "Lato", sans-serif;
+  color: orangered;
+  font-size: 1.5rem;
+  line-height: 0.5rem;
+  font-family: "Poppins", "Lato", sans-serif;
+  padding-left: 1vw;
+  padding-bottom: 2vw;
+}
+.columnFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
 
 .App-logo {
-           height: 25vh;
-           pointer-events: none;
-           padding-right: 5vw;
-           }
+  height: 25vh;
+  pointer-events: none;
+  padding-right: 5vw;
+}
 
 @media (prefers-reduced-motion: no-preference) {
-           .App-logo {
-            animation: App-logo-spin infinite 20s linear;
-               }}
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
 
 @keyframes App-logo-spin {
-                from {
-                  transform: rotate(0deg);}
-                to {
-                  transform: rotate(360deg);}}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#LoadingIcon {
+  padding: 1vw;
+}

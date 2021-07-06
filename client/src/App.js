@@ -16,9 +16,9 @@ const App = () => {
   return (
     <Router>
       <div id="mainContainer">
-        <Header/>
-            <nav>
-            <Link to="/"><h2>The Eco-Friendly E-Commerce Store</h2></Link>
+      <Header/>
+      <nav>
+      <Link to="/"><img src="images/homeIcon.png" alt="Homepage Icon" id="homepageIcon"/></Link>
             <Link to="/cart"><img src="images/shoppingBagIcon.png" alt="Shopping Bag Icon for Cart" id="shoppingBag"/></Link>
             <Link to="/login">Log In / Register</Link>
   
@@ -41,7 +41,7 @@ const App = () => {
             </div>
             </Route>
 
-        <Route path="/:id">
+        <Route path="/products/:id">
         <div className='innerContainer'>
         <ProductItem />
         </div>

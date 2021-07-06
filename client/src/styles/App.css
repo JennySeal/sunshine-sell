@@ -1,36 +1,46 @@
 body {
   background-color: #3ded97;
-  font-family: 'Poppins', 'Lato', sans-serif;
+  font-family: "Poppins", "Lato", sans-serif;
 }
 
-#mainContainer  {
+#mainContainer {
   width: 90vw;
   min-height: 90vh;
   margin: 5vh 5vw;
   border-radius: 20px;
   background-color: #ffcc00;
-  
-  
+  box-shadow: 1px 1px 5px orangered;
 }
 
-nav   {background-color: orangered;
-      display: inline-flex;
-      align-items: center;
-      border-bottom-right-radius: 20px;
-      justify-content: space-between;
-      height: 10vh;
-      box-shadow: 2px 2px 2px #3ded97;}
+nav {
+  background-color: darkslateblue;
+  display: flex;
+  width: 77vw;
+  padding: 0.5vw;
+  align-items: center;
+  border-bottom-right-radius: 20px;
+  justify-content: space-between;
+  height: 10vh;
+  box-shadow: 2px 2px 2px #3ded97;
+}
 
-nav a {color: white;
-      text-decoration: none;
-      margin-right: 10vw;
-      font-family: 'Poppins', 'Lato', sans-serif;
-      }
+nav a {
+  color: rgb(249, 253, 208);
+  text-decoration: none;
+  margin-right: 10vw;
+  font-family: "Poppins", "Lato", sans-serif;
+}
 
-#shoppingBag  {height: 8vh;
-              padding: 1vw;}
+#shoppingBag {
+  height: 8vh;
+  padding: 1vw;
+}
 
-.innerContainer  {
+#homepageIcon {
+  height: 8vh;
+  padding: 1vw;
+}
+
+.innerContainer {
   width: 90vw;
-  
 }

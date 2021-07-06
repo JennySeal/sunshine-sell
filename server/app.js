@@ -12,5 +12,9 @@ app.get('/', (request, response) => {
 
 
 app.get('/products', db.getProducts);
+app.get('/products/:id', db.getProduct);
+app.get('/user/:email', db.getUser);
+app.get('/orders/', db.getOrderHistory);
+app.post('/users', db.addUser);
 
 module.exports = app;

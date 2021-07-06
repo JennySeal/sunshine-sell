@@ -1,33 +1,39 @@
-import React from 'react'
-import {useParams} from 'react-router-dom';
-import {useSelector } from 'react-redux';
-import { selectProducts } from '../slice_reducers/productsSlice';
+import React, {useState} from 'react'
+import {Link, useLocation} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addProductToCart } from '../slice_reducers/cartSlice';
 
+const ProductItem = () => {
+    const productState = useLocation();
+    const productItem = productState.state.product;
+    const dispatch = useDispatch()    
 
-const ProductItem = (id) => {
-    const product_no = useParams();
-    product_no.id--;
-    console.log(product_no);
+    const [saleLinks, setSaleLinks] = useState(false);
+    const [cartButton, setCartButton] = useState(true);   
 
-    const products = useSelector(selectProducts)
-    const productSelected = products.data.data[product_no.id];
-    console.log(products)
+    const addToCart = (e) => {
+        e.preventDefault()
+        setSaleLinks({saleLinks}) 
+        setCartButton(!{cartButton})
+        dispatch(addProductToCart(productItem))
+        };    
 
     return (
         <div>
-        {(products.data !== undefined) ?
             <div id="productContainer">  
             <div id="productText">                    
-            <h3>{productSelected.name}</h3><br/>
-            <h4>{productSelected.description}</h4><br/>
+            <h3>{productItem.name}</h3><br/>
+            <h4>{productItem.description}</h4><br/>
             
-            <h4>{productSelected.cost_per_item} <br/>Items in stock: {productSelected.items_in_stock}</h4><br/>            
-            <label>Quantity<input type="number" placeholder="1" min="1" max={productSelected.items_in_stock}/></label>
-            <button>Add to Cart</button></div>            
-            <img src={productSelected.image} alt={productSelected.name} className="productImg"/>
+            <p>{productItem.cost_per_item} <br/>Items in stock: {productItem.items_in_stock}</p><br/>     
+            
+            <form onSubmit={addToCart}>
+            {cartButton && <button type="submit">Add to Cart</button>}</form>
+            {saleLinks && <div id="checkoutLinks"><Link to='/'>Keep Shopping</Link><Link to='/login'>Checkout</Link><Link to='/cart'>View Cart</Link></div>} 
+            </div>            
+            <img src={productItem.image} alt={productItem.name} className="productImg"/>
             </div>
-            : <p>nothing</p>}
-            
+             
         </div>
     )
 }
