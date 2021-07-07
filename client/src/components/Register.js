@@ -5,14 +5,14 @@ const Register = () => {
 
 
 
-    const [passwordMatch, setPasswordMatch] = useState('false');
+    const [passwordMatch, setPasswordMatch] = useState(false);
     const [values, setValues] = UseForm({email:"", inputPassword:"", inputPasswordTwo:"", first_name:"", surname:"", address_line1:"", address_line2:"",
     town:"", county:"", postcode:""});
-
 
     const checkPasswordMatch = (e) => {
         e.preventDefault();
         console.log({passwordMatch}, {values});
+        console.log(values.inputPassword)
     if (values.inputPassword === values.inputPasswordTwo) setPasswordMatch(true); 
     }
 

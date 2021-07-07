@@ -1,10 +1,14 @@
 import React from "react";
-import { useSelector} from "react-redux";
-import {selectCart } from "../slice_reducers/cartSlice";
+import { useSelector, useDispatch} from "react-redux";
+import {removeProductFromCart, selectCart } from "../slice_reducers/cartSlice";
+
+
 import "./../styles/cart.css";
 
 const Cart = () => {
   const cart = useSelector(selectCart);
+  const dispatch = useDispatch();
+
   console.log(cart)
 
   const getTotal = () => { 
@@ -17,7 +21,9 @@ const Cart = () => {
   const totalPrice = getTotal().toFixed(2);
   console.log(cart)
   
-
+const removeItem = (cartItem) => {
+  dispatch(removeProductFromCart(cartItem))
+}
 
   return (
         <div>
@@ -27,9 +33,11 @@ const Cart = () => {
               <img src={cartItem.image} alt={cartItem.name} />
               <h4>{cartItem.name}</h4>
               <p>price: {cartItem.cost_per_item}</p>
+              <button type="button" onClick={() => {removeItem(cartItem)}}>Remove</button>
               </div>))} 
       
       </div>
+      {(totalPrice === 0.00)  && <p>There is nothing in your basket right now.</p>}
       <p id="total_cost">Total cost of items: £{totalPrice}</p>
       </div>
   );
