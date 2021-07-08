@@ -30,7 +30,6 @@ const Products = () => {
           getProducts()},[getProducts])
       
           const products = useSelector(selectProducts)
-          console.log(products);
 
    return (
         <div >

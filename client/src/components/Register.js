@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import UseForm from './UseForm';
 import { useDispatch } from 'react-redux';
-import {addingUserToDb, addUserToDb, addUserToDbFailed} from './../slice_reducers/loginSlice';
+import {addingCustomerToDb, addedCustomerToDb, addCustomerToDbFailed} from './../slice_reducers/customerSlice';
 const axios = require('axios');
 
 const API_Endpoint = 'http://localhost:5500'
@@ -14,7 +14,7 @@ const Register = () => {
     
 
     const addCustomerToDatabase = useCallback(({values}) => {
-        dispatch(addingUserToDb);
+        dispatch(addingCustomerToDb);
         const {first_name, surname, email, saltyhash, address_line1, address_line2, town, county, postcode} = values;
 
         const payload = {
@@ -32,24 +32,20 @@ const Register = () => {
 
         axios.post(`${API_Endpoint}/users`, (payload))
           .then(data=> {
-              console.log(data)
-        dispatch(addUserToDb(data))
+        dispatch(addedCustomerToDb(payload))
         })
-          .catch((err) => { 
-                dispatch(addUserToDbFailed)
-                console.log(err.response);
+          .catch(() => { 
+                dispatch(addCustomerToDbFailed)
             })},[dispatch])
     
       
 
     const checkPasswordMatch = (e) => {
         e.preventDefault();
-        console.log({passwordMatch}, {values});
-        console.log(values.saltyhash)
-        console.log(values.inputPasswordTwo)
-    if (values.saltyhash === values.inputPasswordTwo) {
+        const passwordOne = values.saltyhash;
+        const passwordTwo = values.inputPasswordTwo;
+    if (passwordOne === passwordTwo) {
         setPasswordMatch(true);
-        console.log(passwordMatch)
         addCustomerToDatabase({values}) 
     }
     }

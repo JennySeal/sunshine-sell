@@ -19,11 +19,11 @@ const Login = () => {
         Please log in to your Sunshine Stores account.<br/>
         <form>
             Username: <input type="text" id="username" /> <br/>
-            Password: <input type="text" id="password" /> 
+            Password:&nbsp; <input type="text" id="password" /> 
             <input type="submit" id="submit" value="Log In"/><br/>
         </form>
-        Or register as a new customer of Sunshine Stores.<br/>  
-        <button onClick={toggleForms}>New Customer</button>
+        <p>Or register as a new customer of Sunshine Stores.  
+        <button onClick={toggleForms}>New Customer</button></p>
         </div>}
         {showRegForm && <Register/>}
         </div>

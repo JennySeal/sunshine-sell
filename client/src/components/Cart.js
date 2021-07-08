@@ -1,15 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch} from "react-redux";
 import {removeProductFromCart, selectCart } from "../slice_reducers/cartSlice";
-
+import {Link} from 'react-router-dom'
 
 import "./../styles/cart.css";
 
 const Cart = () => {
   const cart = useSelector(selectCart);
   const dispatch = useDispatch();
-
-  console.log(cart)
 
   const getTotal = () => { 
       let total_cost = 0;
@@ -18,8 +16,7 @@ const Cart = () => {
       })
           return total_cost;    
 }
-  const totalPrice = getTotal().toFixed(2);
-  console.log(cart)
+  let totalPrice = getTotal().toFixed(2);
   
 const removeItem = (cartItem) => {
   dispatch(removeProductFromCart(cartItem))
@@ -37,8 +34,10 @@ const removeItem = (cartItem) => {
               </div>))} 
       
       </div>
-      {(totalPrice === 0.00)  && <p>There is nothing in your basket right now.</p>}
-      <p id="total_cost">Total cost of items: £{totalPrice}</p>
+      {(totalPrice === "0.00") ?  <div><p id="getShopping">Oh no! There are no eco-items in your basket right now.</p>
+      <p className="links"><Link to='/'>Go to Shopping</Link></p></div> :
+      <div><p id="total_cost">The total cost of the eco-items in your shopping basket is £{totalPrice}.</p>
+      <p className="links"><Link to='/'>Keep Shopping</Link><Link to='/login'>Checkout</Link></p></div>} 
       </div>
   );
 };

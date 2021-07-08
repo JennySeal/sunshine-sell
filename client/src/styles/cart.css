@@ -13,7 +13,7 @@
   justify-content: center;
   margin: 1vw;
   background-color: rgb(249, 253, 208);
-  padding: 1vw;
+  padding: 0.5vw;
   box-shadow: 1vw 1vw 2vw orangered;
   border-radius: 20px;
   color: darkslateblue;
@@ -24,10 +24,27 @@
   border-radius: 10px;
 }
 
-#total_cost     {
-    margin: 1vw;
+#total_cost  
+   {
+    margin: 0.25vw;
     font-weight: 600;
-    padding: 1vw;
-    width: 20vw;
-    border-radius: 20px;
+    padding: 0 2vw;
+    width: 75vw;
+    color: darkslateblue;
 }
+
+#getShopping  
+   {
+    margin: 1vw;
+    font-size: 1rem; 
+    padding: 0 1.5vw;
+    width: 75vw;
+    color: darkslateblue;
+}
+
+
+.links  
+    {display: flex;
+    justify-content: space-between;
+    width: 20vw;
+    padding: 0vw 2.5vw;}

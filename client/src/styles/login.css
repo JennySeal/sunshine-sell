@@ -1,37 +1,49 @@
 #formContainer {
-    display: flex;
-    flex-direction: column;
-    border: 0.5vw solid white;
-    width: 70vw;
-    padding: 2vw;
-    border-bottom-right-radius: 20px;
-}
-
-button, #submit  {
-    font-family: 'Poppins', 'Lato', sans-serif;
-    padding: 0.5vw;
-    border: 0.5vw solid white;
-    background-color: white;
-    border-bottom-right-radius: 20px;
-    margin: 0.5vw;
-    color: #fff;
-    box-shadow: 0 0 30px 30px darkslateblue inset, 0 0 0 0 darkslateblue;
-    -webkit-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
-}
-
-  button:hover, #submit:hover {
-    box-shadow: 0 0 10px 0 #ffcc00 inset, 0 0 10px 4px white;
-    color: darkslateblue;
-  }
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+  margin: 1vw;
+  padding: 2vw;
+  border-radius: 20px;
+  background-color:rgb(249, 253, 208);
+  box-shadow: 1vw 1vw 2vw orangered;
   
-  input   {
-    padding: 0.5vw;
-    border-bottom-right-radius: 10px;
 }
 
-#formfield      {display: flex;
-                flex-direction: row;
-                justify-content: space-between;}
-#capitalize   {text-transform: capitalize;}
-#uppercase   {text-transform: uppercase;}
+button,
+#submit {
+  font-family: "Poppins", "Lato", sans-serif;
+  padding: 0.5vw;
+  border: 0.5vw solid white;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0.5vw;
+  color: #fff;
+  box-shadow: 0 0 30px 30px darkslateblue inset, 0 0 0 0 darkslateblue;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+button:hover,
+#submit:hover {
+  box-shadow: 0 0 10px 0 #ffcc00 inset, 0 0 10px 4px white;
+  color: darkslateblue;
+}
+
+input {
+  padding: 0.5vw;
+  margin: 1vw;
+  border-bottom-right-radius: 10px;
+}
+
+#formfield {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#capitalize {
+  text-transform: capitalize;
+}
+#uppercase {
+  text-transform: uppercase;
+}

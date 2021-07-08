@@ -1,31 +1,34 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-export const loginSlice = createSlice({
-    name: 'login',
+export const customerSlice = createSlice({
+    name: 'customer',
     initialState: {data: undefined,
-                   isLoading: false,
+                   isLoading: true,
                    isLoggedin: false,
                    isError: false
                 },
     reducers: {
-        addingUserToDb:(state) => {
+        addingCustomerToDb:(state) => {
+            console.log('hello1')
             return {
-                ...state.login,
+                ...state.customer,
                 isLoading: true,
                 isLoggedin: false,
                 isError: false,
             }
         },
-        addedUserToDb: (state, action) => {
+        addedCustomerToDb: (state, action) => {
+            console.log('hello2')
         return {
-            ...state.login,
+            ...state.customer,
             isLoading: false,
             isLoggedin: true, 
             isError: false,
             data: action.payload
             }
         },  
-        addUserToDbFailed: (state, action) => {
+        addCustomerToDbFailed: (state, action) => {
+            console.log('hello3')
             return {
                 ...state,
                 isLoading: false,
@@ -36,6 +39,6 @@ export const loginSlice = createSlice({
 }})
 
 
-export const selectLogin = state => state.login;
-export const {addingUserToDb, addUserToDb, addUserToDbFailed} = loginSlice.actions;
-export default loginSlice.reducer;
+export const selectCustomer = state => state.customer;
+export const {addingCustomerToDb, addedCustomerToDb, addCustomerToDbFailed} = customerSlice.actions;
+export default customerSlice.reducer;
