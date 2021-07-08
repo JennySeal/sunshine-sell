@@ -52,11 +52,14 @@ const getOrderHistory = (req, res) => {
 
 
 const addUser = (req, res) => {
-    const {first_name, surname, username, email, saltyhash, address_line1, address_line2, town, county, postcode} = request.body
+    console.log('Hello - at least we got here')
+    console.log(req.body)
+    const {address_line1, address_line2, town, county, postcode, email, saltyhash, username, first_name, surname} = req.body;
+    console.log(address_line1)
 
     pool.query
-    ('INSERT INTO customers(first_name, surname, username, email, saltyhass, address_line1, address_line2, town, county, postcode) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', 
-    [first_name, surname, username, email, saltyhash, address_line1, address_line2, town, county, postcode], (error, results) => {
+    ('INSERT INTO customers(address_line1, address_line2, town, county, postcode, email, saltyhash, username, first_name, surname) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *', 
+    [address_line1, address_line2, town, county, postcode, email, saltyhash, username, first_name, surname], (error, results) => {
         if (error) {
             throw error;
         }

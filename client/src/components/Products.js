@@ -9,6 +9,8 @@ import LoadingIcon from './LoadingIcon';
 const axios = require('axios');
 
 const API_Endpoint = 'http://localhost:5500'
+
+
   
 const Products = () => {
 

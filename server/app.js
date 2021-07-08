@@ -5,6 +5,8 @@ const db = require('./db/index')
 
 
 app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 app.get('/', (request, response) => {
   response.json({ info: `I really miss Miss Moneypenny` })
