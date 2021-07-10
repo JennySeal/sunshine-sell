@@ -3,7 +3,8 @@ import {Link, useLocation} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addProductToCart } from '../slice_reducers/cartSlice';
 import './../styles/productItem.css';
-    
+
+
 const ProductItem = () => {
     const productState = useLocation();
     const productItem = productState.state.product;

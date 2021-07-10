@@ -2,20 +2,24 @@ import React, {useCallback, useState} from 'react'
 import UseForm from './UseForm';
 import { useDispatch } from 'react-redux';
 import {addingCustomerToDb, addedCustomerToDb, addCustomerToDbFailed} from './../slice_reducers/customerSlice';
+import { API_Endpoint } from '../App';
 const axios = require('axios');
-
-const API_Endpoint = 'http://localhost:5500'
+const bcrypt = require('bcryptjs');
 
 const Register = () => {
     const dispatch = useDispatch();
     const [passwordMatch, setPasswordMatch] = useState(false);
-    const [values, handleChange] = UseForm({first_name:"", surname:"", username:"", email:"", saltyhash:"", address_line1:"", address_line2:"",
+    const [values, handleChange] = UseForm({first_name:"", surname:"", username:"", email:"", password:"", address_line1:"", address_line2:"",
     town:"", county:"", postcode:"", inputPasswordTwo:""});
     
 
     const addCustomerToDatabase = useCallback(({values}) => {
         dispatch(addingCustomerToDb);
-        const {first_name, surname, email, saltyhash, address_line1, address_line2, town, county, postcode} = values;
+        const {first_name, surname, email, password, address_line1, address_line2, town, county, postcode} = values;
+        const salt = bcrypt.genSaltSync(10);
+        console.log(salt, password)
+        const saltyhash = bcrypt.hashSync(password, salt);
+        console.log(saltyhash)
 
         const payload = {
         address_line1: address_line1,
@@ -42,7 +46,7 @@ const Register = () => {
 
     const checkPasswordMatch = (e) => {
         e.preventDefault();
-        const passwordOne = values.saltyhash;
+        const passwordOne = values.password;
         const passwordTwo = values.inputPasswordTwo;
     if (passwordOne === passwordTwo) {
         setPasswordMatch(true);
@@ -58,9 +62,9 @@ const Register = () => {
         {(!passwordMatch) ?         
             <div>
             <p>Please enter your registration details.</p><br/>
-         <form >
+         <form id='registrationForm'>
             <div id="formfield">Email address: <input type="email" id="email" name="email" maxLength="50" value={values.email} onChange={handleChange} required/></div> <br/>
-            <div id="formfield">Password: <input type="text" name="saltyhash" minLength="8" value={values.saltyhash} onChange={handleChange} required/></div><br/>
+            <div id="formfield">Password: <input type="text" name="password" minLength="8" value={values.password} onChange={handleChange} required/></div><br/>
             <div id="formfield">Re-enter Password: <input type="text" name="inputPasswordTwo" minLength="8" value={values.inputPasswordTwo} onChange={handleChange} required/></div><br/>
             <div id="formfield">First Name: <input type="text" name='first_name' id="capitalize" maxLength="20" value={values.first_name} onChange={handleChange} required/></div><br/>
             <div id="formfield">Surname: <input type="text" name='surname' maxLength="20" id="capitalize" value={values.surname} onChange={handleChange} required/></div><br/>

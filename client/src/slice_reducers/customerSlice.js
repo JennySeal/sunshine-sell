@@ -33,12 +33,37 @@ export const customerSlice = createSlice({
                 ...state,
                 isLoading: false,
                 isLoggedin: false,
-                isError: true,        
-        } 
+                isError: true,
+            }        
+        }, 
+        getCustomerFromDb: (state) => {
+            return {
+            ...state,
+            isLoading: true,
+            isLoggedin: false, 
+            isError: false,
+            }
+        },  
+        gotCustomerFromDb: (state, action) => {
+            return {
+            ...state.customer,
+            isLoading: false,
+            isLoggedin: true, 
+            isError: false,
+            data: action.payload
+        }
+    },
+        fetchingCustomerFromDbFailed: (state) => {
+            return {
+                ...state,
+                isLoading: false,
+                isLoggedin: false,
+                isError: true,
+            }        
         },
 }})
 
 
 export const selectCustomer = state => state.customer;
-export const {addingCustomerToDb, addedCustomerToDb, addCustomerToDbFailed} = customerSlice.actions;
+export const {addingCustomerToDb, addedCustomerToDb, addCustomerToDbFailed, getCustomerFromDb, gotCustomerFromDb, fetchingCustomerFromDbFailed} = customerSlice.actions;
 export default customerSlice.reducer;

@@ -5,11 +5,9 @@ import { selectProducts } from '../slice_reducers/productsSlice';
 import './../styles/products.css';
 import {Link} from 'react-router-dom';
 import LoadingIcon from './LoadingIcon';
+import { API_Endpoint } from '../App';
 
 const axios = require('axios');
-
-const API_Endpoint = 'http://localhost:5500'
-
 
   
 const Products = () => {

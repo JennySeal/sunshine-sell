@@ -1,4 +1,5 @@
 const {Pool} = require('pg');
+
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -29,30 +30,13 @@ const getProduct = (req, res) => {
 }
 
 
-const getUser = (req, res) => {
-    const email = req.params.email;
-    pool.query('SELECT * FROM customers WHERE email = $1', [email], (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).json(results.rows);
-    })
-}
-
-const getOrderHistory = (req, res) => {
-    const customer_id = req.params.customer_id;
-    const status = req.body;
-    pool.query('SELECT * FROM orders WHERE customer_id = $1 AND status = $2', [customer_id, status], (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).json(results.rows);
-    })
-}
-
+const login = async (req) => {
+    const username = req;
+    const res = await pool.query('SELECT * FROM customers WHERE username = $1', [username]) 
+      return res.rows
+    }
 
 const addUser = (req, res) => {
-    console.log('Hello - at least we got here')
     console.log(req.body)
     const {address_line1, address_line2, town, county, postcode, email, saltyhash, username, first_name, surname} = req.body;
     console.log(address_line1)
@@ -67,10 +51,24 @@ const addUser = (req, res) => {
     })
 }
 
+
+const getOrderHistory = (req, res) => {
+    const customer_id = req.params.customer_id;
+    const status = req.body;
+    pool.query('SELECT * FROM orders WHERE customer_id = $1 AND status = $2', [customer_id, status], (error, results) => {
+        if (error) {
+            return error;
+        }
+      return res.rows;
+    })
+}
+
+
+
 module.exports = {
     getProducts,
     getProduct,
-    getUser, 
+    login, 
     getOrderHistory,
     addUser, 
 };

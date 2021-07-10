@@ -36,6 +36,11 @@ input {
   border-bottom-right-radius: 10px;
 }
 
+#registrationForm input {
+  margin: 0.25vw;
+  padding: 0.5vw;
+}
+
 #formfield {
   display: flex;
   flex-direction: row;

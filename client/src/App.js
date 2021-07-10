@@ -15,8 +15,8 @@ import { useSelector } from 'react-redux';
 import { selectCart } from './slice_reducers/cartSlice';
 import { selectCustomer } from './slice_reducers/customerSlice';
 
-
 const App = () => {
+
 
   const cart = useSelector(selectCart)
   const cartCounter = cart.length;
@@ -71,3 +71,4 @@ const App = () => {
 }
 
 export default App;
+export const API_Endpoint = 'http://localhost:5500'
