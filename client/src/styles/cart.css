@@ -1,3 +1,12 @@
+#cartLayout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 85vw;
+}
+
+
 .cart_container {
   display: flex;
   flex-direction: row;
@@ -16,7 +25,6 @@
   padding: 0.5vw;
   box-shadow: 1vw 1vw 2vw orangered;
   border-radius: 20px;
-  color: darkslateblue;
 }
 
 .cart_item img {
@@ -25,13 +33,17 @@
 }
 
 #total_cost  
-   {
-    margin: 0.25vw;
-    font-weight: 600;
-    padding: 0 2vw;
-    width: 75vw;
+   {margin: 1vw;
+    font-weight: 400;
+    padding: 2vw 2vw;
+    max-width: 13vw;
+    height: 32vh;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgb(249, 253, 208);
     color: darkslateblue;
-}
+    box-shadow: 1vw 1vw 2vw orangered;
+  }
 
 #getShopping  
    {
@@ -43,8 +55,3 @@
 }
 
 
-.links  
-    {display: flex;
-    justify-content: space-between;
-    width: 20vw;
-    padding: 0vw 2.5vw;}

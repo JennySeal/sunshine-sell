@@ -8,8 +8,7 @@ export const customerSlice = createSlice({
                    isError: false
                 },
     reducers: {
-        addingCustomerToDb:(state) => {
-            console.log('hello1')
+        talkingToCustomerDb:(state) => {
             return {
                 ...state.customer,
                 isLoading: true,
@@ -17,8 +16,7 @@ export const customerSlice = createSlice({
                 isError: false,
             }
         },
-        addedCustomerToDb: (state, action) => {
-            console.log('hello2')
+        talkedToCustomerDb: (state, action) => {
         return {
             ...state.customer,
             isLoading: false,
@@ -27,33 +25,7 @@ export const customerSlice = createSlice({
             data: action.payload
             }
         },  
-        addCustomerToDbFailed: (state, action) => {
-            console.log('hello3')
-            return {
-                ...state,
-                isLoading: false,
-                isLoggedin: false,
-                isError: true,
-            }        
-        }, 
-        getCustomerFromDb: (state) => {
-            return {
-            ...state,
-            isLoading: true,
-            isLoggedin: false, 
-            isError: false,
-            }
-        },  
-        gotCustomerFromDb: (state, action) => {
-            return {
-            ...state.customer,
-            isLoading: false,
-            isLoggedin: true, 
-            isError: false,
-            data: action.payload
-        }
-    },
-        fetchingCustomerFromDbFailed: (state) => {
+        talkingToCustomerDbFailed: (state, action) => {
             return {
                 ...state,
                 isLoading: false,
@@ -61,9 +33,20 @@ export const customerSlice = createSlice({
                 isError: true,
             }        
         },
-}})
+        loggedOutOfCustomerDb: (state, action) => {
+            return {
+                ...state.customer,
+                isLoading: false,
+                isLoggedin: false, 
+                isError: false,
+                data: action.payload
+                }
+            },  
+     
+    }
+})
 
 
 export const selectCustomer = state => state.customer;
-export const {addingCustomerToDb, addedCustomerToDb, addCustomerToDbFailed, getCustomerFromDb, gotCustomerFromDb, fetchingCustomerFromDbFailed} = customerSlice.actions;
+export const {talkingToCustomerDb, talkedToCustomerDb, talkingToCustomerDbFailed, loggedOutOfCustomerDb} = customerSlice.actions;
 export default customerSlice.reducer;

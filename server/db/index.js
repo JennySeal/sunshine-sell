@@ -29,12 +29,12 @@ const getProduct = (req, res) => {
     })
 }
 
-
 const login = async (req) => {
     const username = req;
     const res = await pool.query('SELECT * FROM customers WHERE username = $1', [username]) 
       return res.rows
     }
+        
 
 const addUser = (req, res) => {
     console.log(req.body)

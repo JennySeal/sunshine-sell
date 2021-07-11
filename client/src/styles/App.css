@@ -52,3 +52,17 @@ nav a {
 .innerContainer {
   width: 90vw;
 }
+
+#hiAndLogout {
+  display: inline-flex;
+  color:rgb(249, 253, 208);
+  width: 15vw;
+  align-items: center;
+  font-size: 1rem;
+}
+
+#hiAndLogout button {
+  border: 5px solid yellow;
+  margin: 1vw;
+
+}

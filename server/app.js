@@ -12,6 +12,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.get('/', (request, response) => {
+  console.log(response)
   response.json({ info: `I really miss Miss Moneypenny` })
 })
 
@@ -19,9 +20,15 @@ app.get('/products', db.getProducts);
 app.get('/products/:id', db.getProduct);
 app.get('/orders/', db.getOrderHistory);
 app.post('/users', db.addUser);
-app.post('/login', passport.authenticate('local'), ((req, res, next) => {
+app.post('/login', passport.authenticate('local',  {failureRedirect: '/'}), ((req, res) => {
   console.log(req.user)
   res.status(201).json(req.user)
+}))
+  
+app.get('/logout', ((req, res) => {
+  console.log('hello4')
+  req.logout();
+  res.status(200).redirect('/');
 }))
 
 module.exports = app;

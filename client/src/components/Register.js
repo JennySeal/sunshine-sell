@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import UseForm from './UseForm';
 import { useDispatch } from 'react-redux';
-import {addingCustomerToDb, addedCustomerToDb, addCustomerToDbFailed} from './../slice_reducers/customerSlice';
+import {talkingToCustomerDb, talkedToCustomerDb, talkingToCustomerDbFailed} from './../slice_reducers/customerSlice';
 import { API_Endpoint } from '../App';
 const axios = require('axios');
 const bcrypt = require('bcryptjs');
@@ -14,13 +14,11 @@ const Register = () => {
     
 
     const addCustomerToDatabase = useCallback(({values}) => {
-        dispatch(addingCustomerToDb);
+        dispatch(talkingToCustomerDb);
         const {first_name, surname, email, password, address_line1, address_line2, town, county, postcode} = values;
         const salt = bcrypt.genSaltSync(10);
-        console.log(salt, password)
         const saltyhash = bcrypt.hashSync(password, salt);
-        console.log(saltyhash)
-
+        
         const payload = {
         address_line1: address_line1,
         address_line2: address_line2,
@@ -36,10 +34,10 @@ const Register = () => {
 
         axios.post(`${API_Endpoint}/users`, (payload))
           .then(data=> {
-        dispatch(addedCustomerToDb(payload))
+        dispatch(talkedToCustomerDb(payload))
         })
           .catch(() => { 
-                dispatch(addCustomerToDbFailed)
+                dispatch(talkingToCustomerDbFailed)
             })},[dispatch])
     
       
@@ -53,8 +51,6 @@ const Register = () => {
         addCustomerToDatabase({values}) 
     }
     }
-
-
 
 
     return (

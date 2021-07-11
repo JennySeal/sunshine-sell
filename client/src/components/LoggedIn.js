@@ -11,7 +11,7 @@ const LoggedIn = () => {
     return (
         <div>
             Thanks for logging in {customerDetails.data.first_name}. 
-            <br/><Link to='/'>Keep Shopping</Link> 
+            <br/><div id="checkoutLinks"><Link to='/'>Keep Shopping</Link><Link to='/login'>Checkout</Link><Link to='/cart'>View Cart</Link></div>
         </div>
     )
 }

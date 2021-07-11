@@ -2,9 +2,11 @@
                     flex-direction: column;
                     align-items: center;
                     position: fixed;
-                    top: 50vh;
                     margin: 1vw;
                     padding: 1vw;
+                    background-color: rgb(249, 253, 208);
+                    border-radius: 20px;
+                    box-shadow: 1vw 1vw 2vw orangered;
 }
 
 #FourOhFour h2     {font-size: 10rem;
