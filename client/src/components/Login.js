@@ -35,6 +35,9 @@ const Login = () => {
             else {
             dispatch(talkingToCustomerDbFailed(response.data))
             }
+            values.username = "";
+            values.password = "";
+            
     }
         catch (error) {
         dispatch(talkingToCustomerDbFailed)
