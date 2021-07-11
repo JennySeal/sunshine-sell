@@ -60,7 +60,7 @@ const Cart = () => {
           <br/>
           <p className="links">
           <Link to="/">Keep Shopping</Link><br/>
-          <Link to="/login">Checkout</Link>
+          <Link to="/checkout">Checkout</Link>
         </p>
             </div>
       )}     

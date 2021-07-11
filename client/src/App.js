@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
-
 import './styles/App.css';
 
 import Header from './components/Header';
@@ -9,12 +8,14 @@ import Login from './components/Login';
 import Cart from './components/Cart';
 import Products from './components/Products';
 import ProductItem from './components/ProductItem';
+import Checkout from './components/Checkout';
 import Footer from './components/Footer';
 import FourOhFour from './components/FourOhFour';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCart } from './slice_reducers/cartSlice';
 import { selectCustomer, loggedOutOfCustomerDb, talkingToCustomerDbFailed } from './slice_reducers/customerSlice';
+import Register from './components/Register';
 
 const axios = require('axios');
 
@@ -28,10 +29,8 @@ const App = () => {
   const loggedIndicator = customerInfo.isLoggedin;
 
   const logoutOfDb = async() => { 
-    console.log('hello2')
     try {
     const response = await axios.get(`${API_Endpoint}/logout`)
-    console.log('hello2')
     if (response.status === 200) {
     dispatch(loggedOutOfCustomerDb(response.data))    
 }}
@@ -40,10 +39,8 @@ const App = () => {
 };
 };
 
-
   const logout = (e) => {
     e.preventDefault()
-    console.log('hello1')
     logoutOfDb()
   }
 
@@ -79,6 +76,18 @@ const App = () => {
         <Route path="/products/:id">
         <div className='innerContainer'>
         <ProductItem />
+        </div>
+        </Route>
+
+        <Route path="/register">
+        <div id='formContainer'>
+        <Register />
+        </div>
+        </Route>
+
+        <Route path="/checkout">
+        <div className='innerContainer'>
+        <Checkout />
         </div>
         </Route>
 

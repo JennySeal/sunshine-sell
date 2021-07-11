@@ -31,7 +31,7 @@ const ProductItem = () => {
             
             <form onSubmit={addToCart}>
             {cartButton && <button type="submit">Add to Cart</button>}</form>
-            {saleLinks && <div id="checkoutLinks"><Link to='/'>Keep Shopping</Link><Link to='/login'>Checkout</Link><Link to='/cart'>View Cart</Link></div>} 
+            {saleLinks && <div className="checkoutLinks"><Link to='/'>Keep Shopping</Link><Link to='/login'>Checkout</Link><Link to='/cart'>View Cart</Link></div>} 
             </div>            
             <img src={productItem.image} alt={productItem.name} className="productImg"/>
             </div>

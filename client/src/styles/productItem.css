@@ -43,10 +43,11 @@
     color: darkslateblue;
   }
   
-  #checkoutLinks {
-    display: inline-flex;
+  .checkoutLinks {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    width: 25vw;
+    width: 100%;
   }
   
   a {

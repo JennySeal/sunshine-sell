@@ -18,9 +18,7 @@ const getProducts = (req, res) => {
 }
 
 const getProduct = (req, res) => {
-    console.log(req.params)
     const id = req.params.id;
-    console.log(id);
     pool.query('SELECT * FROM products WHERE product_id = $1', [id], (error, results) => {
         if (error) {
             throw error
@@ -37,9 +35,8 @@ const login = async (req) => {
         
 
 const addUser = (req, res) => {
-    console.log(req.body)
     const {address_line1, address_line2, town, county, postcode, email, saltyhash, username, first_name, surname} = req.body;
-    console.log(address_line1)
+
 
     pool.query
     ('INSERT INTO customers(address_line1, address_line2, town, county, postcode, email, saltyhash, username, first_name, surname) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *', 

@@ -72,8 +72,9 @@ const Register = () => {
  
             <input type="submit" id="submit" value="Register" onClick={checkPasswordMatch}/><br/>
         </form></div> : <div>
-        <p>Thank you very much for registering with Sunshine Stores {values.first_name}!</p>
-        <a href="/cart">Proceed to Cart</a><br/>
+        <p>Welcome {values.first_name}!</p>
+        <p>Thank you very much for registering with Sunshine Stores. </p>
+        <a href="/checkout">Proceed to Checkout</a><br/>
         <a href="/">Keep Shopping</a>
         </div>}
         </div>
