@@ -1,9 +1,9 @@
 #cartLayout {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  width: 85vw;
+  max-width: 65vw;
 }
 
 
@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
@@ -25,6 +25,9 @@
   padding: 0.5vw;
   box-shadow: 1vw 1vw 2vw orangered;
   border-radius: 20px;
+  max-width: 12vw;
+  min-height: 45vh;
+  text-align: center;
 }
 
 .cart_item img {
@@ -32,26 +35,25 @@
   border-radius: 10px;
 }
 
-#total_cost  
-   {margin: 1vw;
-    font-weight: 400;
-    padding: 2vw 2vw;
-    max-width: 13vw;
-    height: 32vh;
-    text-align: center;
+.total_cost  
+   {margin: 0.5vw 1vw;
+    font-weight: 500;
+    padding: 0.5vw 1vw;
     border-radius: 20px;
-    background-color: rgb(249, 253, 208);
+    background-color: rgb(244, 253, 147);
     color: darkslateblue;
     box-shadow: 1vw 1vw 2vw orangered;
   }
 
 #getShopping  
    {
-    margin: 1vw;
     font-size: 1rem; 
-    padding: 0 1.5vw;
     width: 75vw;
     color: darkslateblue;
 }
 
 
+.boldOrange  {
+  color: orangered;
+  font-weight: 700;
+}

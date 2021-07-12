@@ -1,3 +1,5 @@
+* {word-wrap: break-word;}
+
 body {
   background-color: #3ded97;
   font-family: "Poppins", "Lato", sans-serif;

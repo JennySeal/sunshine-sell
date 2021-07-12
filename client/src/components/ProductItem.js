@@ -1,14 +1,17 @@
 import React, {useState} from 'react'
 import {Link, useLocation} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProductToCart } from '../slice_reducers/cartSlice';
+import {selectCustomer} from '../slice_reducers/customerSlice';
 import './../styles/productItem.css';
 
 
 const ProductItem = () => {
     const productState = useLocation();
     const productItem = productState.state.product;
-    const dispatch = useDispatch()    
+    const dispatch = useDispatch()
+    const customerDetails = useSelector(selectCustomer)
+    const checkLogin = customerDetails.isLoggedin;    
 
     const [saleLinks, setSaleLinks] = useState(false);
     const [cartButton, setCartButton] = useState(true);   
@@ -31,7 +34,9 @@ const ProductItem = () => {
             
             <form onSubmit={addToCart}>
             {cartButton && <button type="submit">Add to Cart</button>}</form>
-            {saleLinks && <div className="checkoutLinks"><Link to='/'>Keep Shopping</Link><Link to='/login'>Checkout</Link><Link to='/cart'>View Cart</Link></div>} 
+            {saleLinks && <div className="checkoutLinks"><Link to='/'>Keep Shopping</Link>
+            {checkLogin ? <Link to='/checkout'>Checkout</Link> : <Link to='/login'>Checkout</Link>}
+            <Link to='/cart'>View Cart</Link></div>} 
             </div>            
             <img src={productItem.image} alt={productItem.name} className="productImg"/>
             </div>

@@ -1,0 +1,13 @@
+#checkout p, #checkout h3 {margin: 1vw 1.5vw;}
+#checkout button {padding:  1vw;
+                 height: fit-content;}
+#cardpayment    {display: inline-flex;
+                align-items: center;}
+#inlineflex    {display: flex;
+                flex-direction: row;}
+#columnflex     {display: flex;
+                flex-direction: column;}
+#shipping       {background-color: rgb(249, 253, 208);
+                padding: 0.5vw;
+                box-shadow: 1vw 1vw 2vw orangered;
+                border-radius: 20px;}

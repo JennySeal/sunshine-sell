@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
 
 import './styles/App.css';
 
@@ -18,6 +21,7 @@ import { selectCustomer, loggedOutOfCustomerDb, talkingToCustomerDbFailed } from
 import Register from './components/Register';
 
 const axios = require('axios');
+const stripePromise = loadStripe('pk_test_51JCKsaGHGV93t4GrPTQd9yp3q1oMsZ9dbolIoS5OXQcO3u46Eh1pZatSFHH6iR7l6Gk6i4kiPLtenChOxBCVHYlK00V3I8acpe');
 
 const App = () => {
   
@@ -87,7 +91,9 @@ const App = () => {
 
         <Route path="/checkout">
         <div className='innerContainer'>
+        <Elements stripe={stripePromise}>
         <Checkout />
+        </Elements>
         </div>
         </Route>
 
