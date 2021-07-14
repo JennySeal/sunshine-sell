@@ -34,11 +34,11 @@ const removeItem = (cartItem) => {
   dispatch(removeProductFromCart(cartItem));
     };
 const successPayment = data => {
-    alert('Payment successful!')
+    console.log(data)
   }
 
   const failedPayment = data => {
-    alert('Payment failed.')
+    console.log(data)
   }
 
   const onToken = (amount, description) => token =>  
@@ -48,7 +48,7 @@ const successPayment = data => {
       currency,
       amount: poundToPenny(totalWithShipping), 
     })
-  .then(successPayment)
+  .then(successPayment) //dispatch successfulPayment. then add to the database//
   .catch(failedPayment)
 
     
