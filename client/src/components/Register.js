@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react'
 import UseForm from './UseForm';
 import { useDispatch } from 'react-redux';
 import {talkingToCustomerDb, talkedToCustomerDb, talkingToCustomerDbFailed} from './../slice_reducers/customerSlice';
-import { API_Endpoint } from '../App';
+import API_Endpoint from './../config/server';
 import { Link } from 'react-router-dom';
 const axios = require('axios');
 const bcrypt = require('bcryptjs');

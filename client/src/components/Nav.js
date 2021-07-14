@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCart } from './../slice_reducers/cartSlice';
 import { selectCustomer, loggedOutOfCustomerDb, talkingToCustomerDbFailed } from './../slice_reducers/customerSlice';
-import { API_Endpoint } from '../App';
+import API_Endpoint from './../config/server';
 import './../styles/nav.css';
 
 const axios = require('axios');

@@ -5,7 +5,7 @@ import { selectProducts } from '../slice_reducers/productsSlice';
 import './../styles/products.css';
 import {Link} from 'react-router-dom';
 import LoadingIcon from './LoadingIcon';
-import { API_Endpoint } from '../App';
+import API_Endpoint from './../config/server';
 
 const axios = require('axios');
 

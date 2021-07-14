@@ -8,7 +8,7 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
 
-import { API_Endpoint } from '../App';
+import API_Endpoint from './../config/server';
 import {Link, useLocation} from 'react-router-dom';
 import Checkout from '../components/Checkout';
 

@@ -1,61 +1,58 @@
-import React, {useState} from 'react'
+import React from 'react';
+import StripeCheckout from 'react-stripe-checkout';
+
 import { useSelector, useDispatch } from "react-redux";
 import { removeProductFromCart, selectCart } from "../slice_reducers/cartSlice";
-import {CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { selectCustomer } from "../slice_reducers/customerSlice";
+import API_Endpoint from '../config/server';
+import PublicStripeKey from '../config/stripe';
 
-import Payment from './Payment';
 import Shipping from './Shipping'
 import GetTotal from './GetTotal';
 
 import './../styles/checkout.css'
 
+const axios = require('axios');
 
 const Checkout = () => {
-
-    const deliveryCost = "2.50";
-    const cart = useSelector(selectCart);
-    const totalPrice = GetTotal(cart)
-    let totalWithShipping = (parseFloat(totalPrice) + parseFloat(deliveryCost)).toFixed(2);
-    const dispatch = useDispatch()
-
-    const stripe = useStripe()
-    const elements = useElements()
-    const [isPaymentLoading, setPaymentLoading] = useState(false);
-    const [checkoutConfirmed, setCheckoutConfirmed] = useState(false);
+  
+  const dispatch = useDispatch()
+  const currency = 'GBP';
+  const poundToPenny = (amount) => {
+    return parseInt(amount * 100)
+  }
 
 
-      const removeItem = (cartItem) => {
-        dispatch(removeProductFromCart(cartItem));
-      };
-    
-      const showPayment = (e) => {
-        e.preventDefault()
-        setCheckoutConfirmed(!checkoutConfirmed)
-      }
+  const deliveryCost = "2.50";
+  const cart = useSelector(selectCart);
+  const customer = useSelector(selectCustomer)
+  const customerDetails = customer.data;
+  const totalPrice = GetTotal(cart)
+  let totalWithShipping = (parseFloat(totalPrice) + parseFloat(deliveryCost)).toFixed(2);
 
-    const clientSecret = 'secretkey'
-    const payMoney = async(e) => {
-    e.preventDefault();
-    if (!stripe || !elements) {
-        return;
-    }
-    setPaymentLoading(true);
-      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-            card: elements.getElement(CardElement),
-            billing_details: {
-                name: 'Toffy Seal'
-            },
-        },
+const removeItem = (cartItem) => {
+  dispatch(removeProductFromCart(cartItem));
+    };
+const successPayment = data => {
+    alert('Payment successful!')
+  }
+
+  const failedPayment = data => {
+    alert('Payment failed.')
+  }
+
+  const onToken = (amount, description) => token =>  
+      axios.post(`${API_Endpoint}/takepayment`, {
+      description: 'Sunshine Stores products',
+      source: token.id,
+      currency,
+      amount: poundToPenny(totalWithShipping), 
     })
-    setPaymentLoading(false);
-    if (paymentResult.error) {
-        console.log(paymentResult.error.message) 
-        alert(paymentResult.error.message)
-    } else {
-        console.log(paymentResult.token)
-    }
-    }
+  .then(successPayment)
+  .catch(failedPayment)
+
+    
+
     
 
     return (
@@ -92,20 +89,22 @@ const Checkout = () => {
                 </div>
                 </div>
                 
-        <form action='/create-checkout-session' method='POST'><button type='submit' onSubmit={showPayment}>Confirm Checkout</button></form>
 
-        {checkoutConfirmed && <div id='payment'>        <form onSubmit={payMoney}>
          <h3>Payment Details</h3>
         <p>To pay for your eco-friendly Sunshine products please complete your payment details below:</p>
         <p>For testing purposes use this card number: <span className='boldOrange'>4242 4242 4242 4242</span> with any 3 digits for CVC and a future date.</p>
-        <div className='cardpayment'>
-                <Payment amount="62.99" name='STRIPE_INTEGRATION' description ='Order of Sunshine Store products'/>
-                <button disabled={isPaymentLoading}>Buy Now</button>
-                </div>
-                </form>
-                </div>
-                }
-                </div>
+        <StripeCheckout 
+          name='Sunshine-Stores'
+          description={cart[0].name}
+          amount={poundToPenny(totalWithShipping)}
+          token={onToken(poundToPenny(totalWithShipping), 'Eco-products')}
+          currency={currency}
+          stripeKey={PublicStripeKey}
+          zipCode={false}
+          email={customerDetails.email}
+          allowRememberMe={false} /> 
+          </div>
+                
 
     )
 }
