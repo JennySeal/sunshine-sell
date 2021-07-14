@@ -3,6 +3,7 @@ import UseForm from './UseForm';
 import { useDispatch } from 'react-redux';
 import {talkingToCustomerDb, talkedToCustomerDb, talkingToCustomerDbFailed} from './../slice_reducers/customerSlice';
 import { API_Endpoint } from '../App';
+import { Link } from 'react-router-dom';
 const axios = require('axios');
 const bcrypt = require('bcryptjs');
 
@@ -74,8 +75,8 @@ const Register = () => {
         </form></div> : <div>
         <p>Welcome {values.first_name}!</p>
         <p>Thank you very much for registering with Sunshine Stores. </p>
-        <a href="/checkout">Proceed to Checkout</a><br/>
-        <a href="/">Keep Shopping</a>
+        <div className='inline'><Link to="/checkout"><button>Proceed to Checkout</button></Link>
+        <Link to="/checkout"><button>Keep Shopping</button></Link></div>
         </div>}
         </div>
     )

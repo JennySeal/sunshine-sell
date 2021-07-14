@@ -23,7 +23,7 @@
   margin: 1vw;
   background-color: rgb(249, 253, 208);
   padding: 0.5vw;
-  box-shadow: 1vw 1vw 2vw orangered;
+  box-shadow: 0.5vw 0.5vw 0.5vw orangered;
   border-radius: 20px;
   max-width: 12vw;
   min-height: 45vh;
@@ -37,12 +37,13 @@
 
 .total_cost  
    {margin: 0.5vw 1vw;
+    margin-right: 15vw;
     font-weight: 500;
     padding: 0.5vw 1vw;
     border-radius: 20px;
-    background-color: rgb(244, 253, 147);
+    background-color: white;
     color: darkslateblue;
-    box-shadow: 1vw 1vw 2vw orangered;
+    border: .1vw solid orangered;
   }
 
 #getShopping  

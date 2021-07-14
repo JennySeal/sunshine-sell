@@ -4,12 +4,22 @@ import {useDispatch, useSelector} from 'react-redux';
 import {talkingToCustomerDb, talkedToCustomerDb, talkingToCustomerDbFailed, selectCustomer} from './../slice_reducers/customerSlice';
 import LoggedIn from '../components/LoggedIn';
 import UseForm from './UseForm';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+
 import { API_Endpoint } from '../App';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
+import Checkout from '../components/Checkout';
+
+const stripePromise = loadStripe('pk_test_51JCKsaGHGV93t4GrPTQd9yp3q1oMsZ9dbolIoS5OXQcO3u46Eh1pZatSFHH6iR7l6Gk6i4kiPLtenChOxBCVHYlK00V3I8acpe');
+
 const axios = require('axios');
 
 const Login = () => {
     const dispatch = useDispatch();
+    const location = useLocation()
+    const fromCart = location.state?.fromCart;
 
     const customerState = useSelector(selectCustomer);
     const showLoggedInForm = customerState.isLoggedin;
@@ -47,8 +57,9 @@ const Login = () => {
        }
 
     return (
-        <div id="formContainer">
-        {!showLoggedInForm && <div id="loginForm">
+        <div>
+        {!showLoggedInForm && <div className="pageContainer">
+        <div id="loginForm">
         Please log in to your Sunshine Stores account.<br/>
         <form>
             Username: <input type="username" id="username" name="username" value={values.username} placeholder="" onChange={handleChange} required/> <br/>
@@ -58,8 +69,11 @@ const Login = () => {
         {failedToLogIn && <h3>Sorry! Your email or username is incorrect</h3>}
         <p>Or register as a new customer of Sunshine Stores.</p>  
         <Link to="/register">Register as a New Customer</Link>
+        </div>
         </div>}
-        {showLoggedInForm && <LoggedIn />}
+        {showLoggedInForm && !fromCart && <LoggedIn />}
+        {showLoggedInForm && fromCart && 
+            <Elements stripe={stripePromise}><Checkout /></Elements>}
         </div>
     )
 }

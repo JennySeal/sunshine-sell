@@ -33,10 +33,16 @@ const ProductItem = () => {
             <p>{productItem.cost_per_item} <br/>Items in stock: {productItem.items_in_stock}</p><br/>     
             
             <form onSubmit={addToCart}>
-            {cartButton && <button type="submit">Add to Cart</button>}</form>
-            {saleLinks && <div className="checkoutLinks"><Link to='/'>Keep Shopping</Link>
-            {checkLogin ? <Link to='/checkout'>Checkout</Link> : <Link to='/login'>Checkout</Link>}
-            <Link to='/cart'>View Cart</Link></div>} 
+            {cartButton && <button type="submit">Add to Cart</button>}
+            </form>
+            
+            {saleLinks && 
+            <div>
+            <Link to='/'><button>Keep Shopping</button></Link>
+            {checkLogin ? <Link to='/checkout'><button>Checkout</button></Link> :
+             <Link to={{pathname:'/login', state: {fromCart: true}}}><button>Checkout</button></Link>}
+            <Link to='/cart'><button>View Cart</button></Link>
+            </div>}
             </div>            
             <img src={productItem.image} alt={productItem.name} className="productImg"/>
             </div>

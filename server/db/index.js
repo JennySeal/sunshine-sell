@@ -61,6 +61,47 @@ const getOrderHistory = (req, res) => {
 }
 
 
+const addOrder = (req, res) => {
+    const {total_spent, customer_id, date_of_order, status} = req.body;
+
+    pool.query
+    ('INSERT INTO orders(total_spent, customer_id, date_of_order, status) VALUES($1, $2, $3, $4, $5, $6) RETURNING *', 
+    [total_spent, customer_id, date_of_order, status], (error, results) => {
+        if (error) {
+            throw error;
+        }
+        res.status(201).send(`Order added with ID: ${results.rows[0].order_id}`)
+    })
+}
+
+const addOrderLines = (req, res) => {
+    const {order_id, product_id, quantity} = req.body;
+
+    pool.query
+    ('INSERT INTO order_lines(order_id, product_id, quantity) VALUES($1, $2, $3) RETURNING *', 
+    [order_id, product_id, quantity], (error, results) => {
+        if (error) {
+            throw error;
+        }
+        res.status(201).send(`Order Lines added with ID: ${results.rows[0].order_id}`)
+    })
+}
+
+const updateStock = (req, res) => {
+    const {product_ids} = req.body;
+
+    pool.query
+    ('UPDATE products SET items_in_stock = items_in_stock - 1 WHERE product_id IN (product_ids) VALUES($1) RETURNING *', 
+    [product_id], (error, results) => {
+        if (error) {
+            throw error;
+        }
+        res.status(201).send(`Stock updated for products with ID: ${results.rows[0].product_id}`)
+    })
+}
+
+
+
 
 module.exports = {
     getProducts,
@@ -68,4 +109,7 @@ module.exports = {
     login, 
     getOrderHistory,
     addUser, 
+    addOrder,
+    addOrderLines,
+    updateStock,
 };

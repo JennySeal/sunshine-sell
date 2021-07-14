@@ -10,9 +10,9 @@ const LoggedIn = () => {
     const cart = useSelector(selectCart);
 
     return (
-        <div>
-            <p>Thank you for logging in {customerDetails.data.first_name}.</p> 
-            <div className="checkoutLinks"><Link to='/'>Keep Shopping</Link>
+        <div id='account'>
+            <p>Thank you for logging in {customerDetails.data.first_name}. </p> 
+            <div className="checkoutLinks"><Link to='/'><button>Keep Shopping</button></Link>
             {(cart.length > 0) && <Link to='/checkout'>Checkout</Link>}</div> 
         </div>
     )

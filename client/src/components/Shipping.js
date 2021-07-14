@@ -11,15 +11,15 @@ const Shipping = () => {
     console.log(customerData)
 
     return (
-        <div id='shipping'>
+        <div className='shipping'>
         <p>Your shipping address is:</p>
         {customerData ? 
             <div>
             <p>{customerData.first_name} {customerData.surname},<br/>
-            {customerData.address_line1},<br/>
-            {customerData.address_line2},<br/>
-            {customerData.town},<br/>
-            {customerData.county},<br/>            
+            {customerData.address_line1}<br/>
+            {customerData.address_line2}<br/>
+            {customerData.town}<br/>
+            {customerData.county}<br/>            
             {customerData.postcode}<br/>
             </p>
             </div>
