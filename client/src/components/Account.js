@@ -4,6 +4,8 @@ import './../styles/account.css'
 import Shipping  from './Shipping'
 
 const Account = () => {
+        
+
     return (
         <div id='account'>
             <h4>Order history</h4>

@@ -1,9 +1,10 @@
 footer      {position: fixed;
             bottom: 0;
-            width: 90vw;
-            padding-right: 1vw;
+            width: 89vw;
+            height: auto;
             text-align: right;
-            font-family: 'Poppins', 'Lato', sans-serif;
-            background-color:  rgb(249, 253, 208);
-            border-radius: 20px;
+            background-color: whitesmoke;
+            padding: var(--small-padding);
+            font-size: 80%;
+            border-radius: var(--border-radius-outer);
 }

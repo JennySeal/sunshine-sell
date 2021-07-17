@@ -30,20 +30,18 @@ const Products = () => {
           const products = useSelector(selectProducts)
 
    return (
-        <div >
-            
+        <div>
             {products.isLoading && <LoadingIcon/>}
-           
             {(products.data !== undefined) ?
               <div className="productDisplay">
                   {products.data.data.map((product) =>
-                    <div key={product.product_id} className="productItemDisplay">
+                    <div key={product.product_id} className="card" id='productCard'>
                     <Link to={{
                       pathname: `/products/${product.product_id}`,
                       state: {product},
                     }}>
                     <img src={product.image} alt={product.name} className="productImg" props={product.product_id}/>
-                    <h3>{product.name}</h3>
+                    <h3 className='boldOrange'>{product.name}</h3>
                     <p>{product.cost_per_item}</p></Link>
             </div>)}</div> : <h3 id="LoadingIcon">It's worth waiting for!</h3>}
               

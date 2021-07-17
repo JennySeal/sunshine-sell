@@ -1,48 +1,50 @@
 nav {
-    background-color: darkslateblue;
-    display: flex;
-    width: 77vw;
-    padding: 0.5vw;
-    align-items: center;
-    border-bottom-right-radius: 20px;
-    justify-content: space-between;
-    height: 10vh;
-    box-shadow: 2px 2px 2px #3ded97;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 82vw;
+  height: 10vh;
+  background-color: var(--font-color);
+    padding: var(--small-padding);
+    border-bottom-right-radius: var(--border-radius-outer);
+    box-shadow: var(--box-shadow);
   }
   
   nav a {
-    color: rgb(249, 253, 208);
-    text-decoration: none;
-    margin-right: 10vw;
-    font-family: "Poppins", "Lato", sans-serif;
+    color: var(--lightBackground);
+    font-size: 90%;
   }
   
-  #shoppingBag {
+  #icon {
     height: 8vh;
-    padding: 0;
+    margin: 0;
+  }
+
+  #cartCounterFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:auto;
   }
   
   #cartCounter {
-    border: 3px solid #ffcc00;
+    border: 3px solid var(--highlight-colour);
     border-radius: 50%;
-    padding: 0vw 0.5vw;
+    padding: 0vw var(--small-padding);
+    color: var(--lightBackground);
+    margin: 0;
   }
   
-  #homepageIcon {
-    height: 8vh;
-    padding: 1vw;
-  }
   
   #hiAndLogout {
     display: inline-flex;
-    color: rgb(249, 253, 208);
     width: 30vw;
     align-items: center;
     font-size: 1rem;
   }
   
   #hiAndLogout button {
-    border: 5px solid yellow;
-    margin: 1vw;
+    border: 3px solid var(--insideBackground);
+    margin: var(--margin);
   }
   

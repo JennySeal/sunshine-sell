@@ -11,7 +11,7 @@ const Shipping = () => {
     console.log(customerData)
 
     return (
-        <div className='shipping'>
+        <div className='card' id='shipping'>
         <p>Your shipping address is:</p>
         {customerData ? 
             <div>

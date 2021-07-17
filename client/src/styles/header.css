@@ -2,37 +2,32 @@
   margin: 0;
   padding: 0;
 }
+
 header {
-  font-family: "Poppins", "Lato", "Helvetica", sans-serif;
-  height: 17vh;
+  height: 25vh;
   width: 90vw;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  border-top-right-radius: var(--border-radius-outer);
+  border-top-left-radius: var(--border-radius-outer);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(249, 253, 208);
+  background-color: var(--lightBackground)
 }
+
 h1 {
-  color: orangered;
-  font-size: 3.5rem;
-  padding-top: 0.5vw;
-  padding-left: 1vw;
+  color: var(--highlight-colour);
+  font-size: 300%;
+  padding-top: var(--padding);
+  padding-left: var(--padding);
 }
+
 h2 {
-  font-family: "Lato", sans-serif;
+  font-family: "Inter", sans-serif;
   color: orangered;
-  font-size: 1.5rem;
-  line-height: 0.5rem;
+  font-size: 150%;
   font-family: "Poppins", "Lato", sans-serif;
-  padding-left: 1vw;
-  padding-bottom: 2vw;
-}
-.columnFlex {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  padding-left: var(--padding);
+  padding-bottom: var(--padding);
 }
 
 .App-logo {
@@ -57,5 +52,31 @@ h2 {
 }
 
 #LoadingIcon {
-  padding: 1vw;
+  padding: var(--padding);
+}
+
+
+@media (max-width: 750px) {
+  h1 {
+    font-size: 220%;
+  }
+h2 {
+    font-size: 115%;
+  } 
+App-logo {
+    height: 15vh;
+  }
+}
+
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 150%;
+  }
+h2 {
+    font-size: 105%;
+  } 
+App-logo {
+    height: 11vh;
+  }
 }

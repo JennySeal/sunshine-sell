@@ -1,7 +1,9 @@
+.FourOhFourContainer {
+  display: flex;
+  flex-direction: column;
+}
 
-.FourOhFour         {font-size: 10rem;
-                    margin: 1vw;
-                    padding: 1vw;
-                    line-height: 6rem;
-                   }
-
+.FourOhFour {
+  font-size: 10rem;
+  line-height: 6rem;
+}

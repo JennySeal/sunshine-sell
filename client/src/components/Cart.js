@@ -19,26 +19,27 @@ const Cart = () => {
   };
 
   return (
-    <div id="inlineflex">
+    <div>
 
     {(cart.length > 0) ? 
-    <div id="cartLayout">
-    <div className="total_cost">
-          <p>The cost of the eco-items in your shopping basket is <span className='boldOrange'>£{totalPrice}</span>.<br/></p>
-          <Link to="/"><button>Keep Shopping</button></Link>
+    <div className='pageContainer' id='cartContainer'>
+          <p>The cost of the eco-items in your shopping basket is <span className='boldOrange'>£{totalPrice}</span></p>.
+          <div id='inlineFlex'><Link to="/"><button>Keep Shopping</button></Link>
           {!checkLogin ? <Link to={{pathname:'/login', state: {fromCart: true}}}><button >Checkout</button></Link> :
-          <Link to='/checkout'><button>Checkout</button></Link>
-        } 
+          <Link to='/checkout'><button>Checkout</button></Link>}</div>
+         
         
-        </div>
-    <div className="cart_container">
+    <div className='rowFlex'>
+    
         {cart.map((cartItem) => (
-          <div key={cartItem.product_id} className="cart_item">
+          <div key={cartItem.product_id} className="card" id='cartItem'>
             <img src={cartItem.image} alt={cartItem.name} />
+            <div id='productText'>
             <h4>{cartItem.name}</h4>
             <p>price: {cartItem.cost_per_item}</p>
             <button type="button" onClick={() => {removeItem(cartItem);}}>Remove</button>
-          </div>
+            </div>
+            </div>
         ))}
       </div>
           
@@ -47,13 +48,11 @@ const Cart = () => {
         :
 
         totalPrice === "0.00" && 
-            <div className="total_cost">
-            <p id="getShopping">
+            <div>
+            <p>
                 Oh no! There are no eco-items in your basket right now.
-            </p>
-            <p className="links">
-              <Link to="/">Go to Shopping</Link>
-            </p>
+            </p>  
+              <Link to="/" className='boldOrange'>Start Shopping</Link>
             </div>}     
 </div>)
 };

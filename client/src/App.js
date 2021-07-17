@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "./styles/App.css";
+import "./styles/Index.css";
 
 import Header from "./components/Header";
 import Nav from "./components/Nav";
@@ -54,13 +54,14 @@ const App = () => {
             <Route path="/account">
               <Account />
             </Route>
-
+  
             <Route path="/*">
               <FourOhFour />
             </Route>
           </Switch>
-          <Footer />
+         
         </div>
+        <Footer />
       </div>
     </Router>
   );

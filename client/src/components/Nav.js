@@ -38,8 +38,8 @@ const Nav = () => {
     return (
         <div>
         <nav>
-              <Link to="/"><img src="images/homeIcon.png" alt="Homepage Icon" id="homepageIcon"/></Link>
-              <Link to="/cart"><img src="images/shoppingBagIcon.png" alt="Shopping Bag Icon for Cart" id="shoppingBag"/><span id="cartCounter">{cartCounter}</span></Link>
+              <Link to="/"><img src="/images/homeIcon.png" alt="Homepage Icon" id="icon"/></Link>
+              <div id='cartCounterFlex'><Link to="/cart"><img src="/images/shoppingBagIcon.png" alt="Shopping Bag Icon for Cart" id="icon"/><span id="cartCounter">{cartCounter}</span></Link></div>
               {!loggedIndicator && <Link to={{pathname:'/login', state: {fromCart: false}}}><p>Log In / Register</p></Link>}
               {loggedIndicator &&  <div id='hiAndLogout'><Link to="/account">{customerInfo.data.first_name}'s account </Link><button onClick={logout}>Logout</button></div>}
     
