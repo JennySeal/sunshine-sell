@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import {Link} from 'react-router-dom';
-
-
+import {Link} from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 import {removeProductFromCart, selectCart } from "../slice_reducers/cartSlice";
 import { selectCustomer } from "../slice_reducers/customerSlice";
@@ -23,12 +21,10 @@ const Checkout = () => {
   const [paid, setPaid] = useState(false)
 
 
-
   const currency = 'GBP';
   const poundToPenny = (amount) => {
     return parseInt(amount * 100)
   }
-
 
   const deliveryCost = "2.50";
   const cart = useSelector(selectCart);
@@ -62,7 +58,6 @@ const removeItem = (cartItem) => {
 
      
   const oncePaid = () => {
-    setPaid(!paid)
     const date = new Date()
     const payload = {
       total_spent: totalWithShipping,
@@ -83,19 +78,22 @@ const removeItem = (cartItem) => {
             order_line_id: `${parseInt(data.data)}-${cart[i].product_id}`,
             order_id: parseInt(data.data),
             product_id: cart[i].product_id,
-            quantity: 1
+            quantity: 1,
+            customer_id: customer_id
         }
         console.log(payload_orderlines)
         axios.post(`${API_Endpoint}/orderlines`, (payload_orderlines))
         axios.put(`${API_Endpoint}/updatestock`, ({product_id: cart[i].product_id}))
-      }  })}
+}        setPaid(!paid)
+         })}
 
 
     return (
         <div className='pageContainer' id='checkoutContainer'>
-                <div className='columnflex' id='orderDetails'>
+                
                     {paid && <p className='boldOrange'>Thank you very much for your order.</p>}
-                    <h3>Order Summary</h3>
+                    {paid && <Link to='/account'><button>View Order History</button></Link>}
+                    {!paid && <div className='columnflex' id='orderDetails'><h3>Order Summary</h3>
                           <p>The cost of the eco-items in your shopping basket is <span className='boldOrange'>£{totalPrice}</span>.</p>
                           <p>The delivery costs for shipping is <span className='boldOrange'>£{deliveryCost}</span>.</p>   
                           <p>The total cost is <span className='boldOrange'>£{totalWithShipping}</span>.</p>  
@@ -108,11 +106,11 @@ const removeItem = (cartItem) => {
                             <p>price: {cartItem.cost_per_item}</p>
                             <button type="button" id='removeCheckout' onClick={() => {removeItem(cartItem);}}>Remove</button>
                             </div>
-                            </div>
-                            
+                            </div>                   
                         ))}
                       </div>
-                </div>
+                      </div>}
+                
                 
          {!paid && <div>                 
          <h3>Payment Details</h3>
@@ -130,7 +128,7 @@ const removeItem = (cartItem) => {
           email={customerDetails.email}
           allowRememberMe={false}
           >
-          <Link to='/account'><button className='btn'>Pay Now</button></Link> 
+          <button className='btn'>Pay Now</button>
           </StripeCheckout>
           <h3>Delivery</h3>
           <Shipping />

@@ -19,6 +19,8 @@ h1 {
   font-size: 300%;
   padding-top: var(--padding);
   padding-left: var(--padding);
+  text-shadow: 2vw 1.3vw 0.7vw white;
+
 }
 
 h2 {

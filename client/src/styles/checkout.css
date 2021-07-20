@@ -14,6 +14,8 @@
 #shipping   {
     color: var(--font-color);
     background-color: whitesmoke;
+    width: 25vw;
+    line-height: 1.5rem;
 
 
 }

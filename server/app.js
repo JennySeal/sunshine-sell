@@ -10,7 +10,7 @@ require('./passport');
 const CORS_WHITELIST = require('./config/frontend')
 const corsOptions = {
   origin: (origin, callback) => 
-  (CORS_WHITELIST.indexOf(origin) !== -1) ? callback(null, true) : callback(new Error('Not allowed by Cors'))
+  (CORS_WHITELIST.indexOf(origin) !== -1) ? callback(null, true) : callback(new Error(`Not allowed by Cors: origin is ${origin} and callback is ${callback}`))
 }
 
 const postStripeCharge = res => (stripeError, stripeRes) => {
@@ -36,7 +36,7 @@ app.get('/', (request, response) => {
 
 app.get('/products', db.getProducts);
 app.get('/products/:id', db.getProduct);
-app.get('/orderhistory/', db.getOrderHistory);
+app.get('/orderhistory/:id', db.getOrderHistory);
 app.post('/users', db.addUser);
 app.post('/login', passport.authenticate('local',  {failureRedirect: '/'}), ((req, res) => {
   res.status(201).json(req.user)

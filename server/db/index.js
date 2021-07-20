@@ -48,13 +48,16 @@ const addUser = (req, res) => {
 
 
 const getOrderHistory = (req, res) => {
-    const customer_id = req.params.customer_id;
-    const status = req.body;
-    pool.query('SELECT * FROM orders WHERE customer_id = $1 AND status = $2', [customer_id, status], (error, results) => {
+    console.log(req.params.id)
+    const customer_id = req.params.id;
+    const customer_id_number = parseInt(customer_id, 10);
+    pool.query('SELECT order_lines.order_line_id, order_lines.product_id, orders.date_of_order, products.name, products.image, products.price FROM order_lines INNER JOIN orders ON order_lines.order_id = orders.order_id INNER JOIN products ON order_lines.product_id = products.product_id WHERE order_lines.customer_id = $1', 
+    [customer_id_number], (error, results) => {
         if (error) {
-            return error;
+           throw error;
         }
-      return res.rows;
+        console.log(results)
+        res.status(200).json(results.rows)
     })
 }
 
@@ -72,11 +75,11 @@ const addOrder = (req, res) => {
 }
 
 const addOrderLines = (req, res) => {
-    const {order_line_id, order_id, product_id, quantity} = req.body;
+    const {order_line_id, order_id, product_id, quantity, customer_id} = req.body;
 
     pool.query
-    ('INSERT INTO order_lines(order_line_id, order_id, product_id, quantity) VALUES($1, $2, $3, $4) RETURNING *', 
-    [order_line_id, order_id, product_id, quantity], (error, results) => {
+    ('INSERT INTO order_lines(order_line_id, order_id, product_id, quantity, customer_id) VALUES($1, $2, $3, $4, $5) RETURNING *', 
+    [order_line_id, order_id, product_id, quantity, customer_id], (error, results) => {
         if (error) {
             throw error;
         }

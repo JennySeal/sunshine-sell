@@ -34,7 +34,8 @@ const Products = () => {
             {products.isLoading && <LoadingIcon/>}
             {(products.data !== undefined) ?
               <div className="productDisplay">
-                  {products.data.data.map((product) =>
+               
+              {products.data.data.map((product) =>
                     <div key={product.product_id} className="card" id='productCard'>
                     <Link to={{
                       pathname: `/products/${product.product_id}`,

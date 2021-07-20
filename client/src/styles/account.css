@@ -1,0 +1,16 @@
+.orderImg    {
+    width: 6vw;
+}
+
+#orderHistory {
+    align-items: center;
+    justify-content: space-evenly;
+    width: 60vw;
+    padding-bottom: var(--small-padding);
+    border-bottom: 0.2vw solid var(--highlight-colour);
+    font-size: 90%;
+}
+
+#account    {
+    align-items: flex-start;
+}
