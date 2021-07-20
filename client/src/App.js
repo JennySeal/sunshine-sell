@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { selectCustomer } from "./slice_reducers/customerSlice";
+import { useSelector } from "react-redux";
 
 import "./styles/Index.css";
 
@@ -17,7 +19,14 @@ import Register from "./components/Register";
 
 
 const App = () => {
-  
+
+
+console.log('Hello, if you like this site and would like to know more, my website is www.jennyseal.com')
+
+const customerDetails = useSelector(selectCustomer);
+const customerLoggedIn = customerDetails.isLoggedin;
+
+
    return (
     <Router>
       <div id="mainContainer">
@@ -52,7 +61,7 @@ const App = () => {
             </Route>
 
             <Route path="/account">
-              <Account />
+            {customerLoggedIn ? <Account/> : <Redirect to='/' />}
             </Route>
   
             <Route path="/*">

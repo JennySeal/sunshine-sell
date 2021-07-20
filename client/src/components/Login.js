@@ -36,7 +36,6 @@ const Login = () => {
         const response = await axios.post(`${API_Endpoint}/login`, ({
             username: username, 
             password: password}))
-            console.log(response.status)
             if (response.status === 201) { 
             dispatch(talkedToCustomerDb(response.data)) }
             else {

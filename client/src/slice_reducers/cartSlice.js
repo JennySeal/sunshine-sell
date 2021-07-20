@@ -1,18 +1,33 @@
 import {createSlice} from '@reduxjs/toolkit';
 
+const initialState = {
+    data: [],
+    isEmpty: true,
+}
+
 export const cartSlice = createSlice({
     name: 'cart',
-    initialState: [],                
+    initialState,            
     reducers: {
         addProductToCart:(state,action) => {
-            state.push(action.payload)
+            return {
+                ...state,
+            data: state.data.concat(action.payload),
+            isEmpty: false,
+            }
         },
-        removeProductFromCart:(state, action) => { 
-                state.filter(product => action.payload.product_id !== product.product_id)
-         },
-         emptyCartForSale:(state, action) => {
-             console.log(action.payload)
-             return state.filter(product => action.payload !== product.product.id)
+        
+        removeProductFromCart:(state, action) => {
+            return {
+            ...state.cart, 
+            data: state.data.filter(product => action.payload.product_id !== product.product_id),
+            isEmpty: (!state.data) ? true : false,
+
+        }
+    },
+         
+         emptyCartForSale:() => {
+             return initialState 
         },
      }})
 

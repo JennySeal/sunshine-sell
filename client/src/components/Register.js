@@ -1,15 +1,17 @@
 import React, {useCallback, useState} from 'react'
 import UseForm from './UseForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {talkingToCustomerDb, talkedToCustomerDb, talkingToCustomerDbFailed} from './../slice_reducers/customerSlice';
 import API_Endpoint from './../config/server';
 import { Link } from 'react-router-dom';
 import './../styles/login.css';
+import {selectCart} from '../slice_reducers/cartSlice';
 const axios = require('axios');
 const bcrypt = require('bcryptjs');
 
 const Register = () => {
     const dispatch = useDispatch();
+    const cart = useSelector(selectCart)
     const [passwordMatch, setPasswordMatch] = useState(false);
     const [values, handleChange] = UseForm({first_name:"", surname:"", username:"", email:"", password:"", address_line1:"", address_line2:"",
     town:"", county:"", postcode:"", inputPasswordTwo:""});
@@ -36,7 +38,7 @@ const Register = () => {
 
         axios.post(`${API_Endpoint}/users`, (payload))
           .then(data=> {
-        dispatch(talkedToCustomerDb(data))
+        dispatch(talkedToCustomerDb(payload))
         })
           .catch(() => { 
                 dispatch(talkingToCustomerDbFailed())
@@ -76,8 +78,8 @@ const Register = () => {
         </form></div> : <div>
         <p>Welcome {values.first_name}!</p>
         <p>Thank you very much for registering with Sunshine Stores. </p>
-        <div className='inlineFlex'><Link to="/checkout"><button>Proceed to Checkout</button></Link>
-        <Link to="/checkout"><button>Keep Shopping</button></Link></div>
+        <div className='inlineFlex'>{cart.isEmpty && <Link to="/checkout"><button>Proceed to Checkout</button></Link>}
+        <Link to="/"><button>Keep Shopping</button></Link></div>
         </div>}
         </div>
     )

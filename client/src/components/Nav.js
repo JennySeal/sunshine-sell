@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCart } from './../slice_reducers/cartSlice';
+import { emptyCartForSale, selectCart } from './../slice_reducers/cartSlice';
 import { selectCustomer, loggedOutOfCustomerDb, talkingToCustomerDbFailed } from './../slice_reducers/customerSlice';
 import API_Endpoint from './../config/server';
 import './../styles/nav.css';
@@ -12,7 +12,7 @@ const axios = require('axios');
 const Nav = () => {
 
     const cart = useSelector(selectCart)
-    const cartCounter = cart.length;
+    const cartCounter = cart.data.length;
     const customerInfo = useSelector(selectCustomer);
     const loggedIndicator = customerInfo.isLoggedin;
     
@@ -22,7 +22,8 @@ const Nav = () => {
       try {
       const response = await axios.get(`${API_Endpoint}/logout`)
       if (response.status === 200) {
-      dispatch(loggedOutOfCustomerDb(response.data))    
+      dispatch(loggedOutOfCustomerDb(response.data)) 
+      dispatch(emptyCartForSale())   
     }}
       catch (error) {
       dispatch(talkingToCustomerDbFailed)

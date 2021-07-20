@@ -27,7 +27,8 @@ const Checkout = () => {
   }
 
   const deliveryCost = "2.50";
-  const cart = useSelector(selectCart);
+  const cartData = useSelector(selectCart);
+  const cart = cartData.data;
   const customer = useSelector(selectCustomer)
   const customerDetails = customer.data;
   const customer_id = customerDetails.customer_id;
@@ -40,8 +41,8 @@ const removeItem = (cartItem) => {
     };
 
 
-  const failedPayment = data => {
-    console.log(data)
+  const failedPayment = error => {
+   throw error
   }
 
   const onToken = ((amount, description, e) => token => { 
@@ -67,10 +68,7 @@ const removeItem = (cartItem) => {
     }
     axios.post(`${API_Endpoint}/order`, (payload))
     .then(data=> {
-      console.log(data)
       const length = Object.keys(cart).length
-      console.log(length)
-      console.log(cart)
       let payload_orderlines;
   
       for (let i=0; i<length; i++) {
@@ -81,7 +79,6 @@ const removeItem = (cartItem) => {
             quantity: 1,
             customer_id: customer_id
         }
-        console.log(payload_orderlines)
         axios.post(`${API_Endpoint}/orderlines`, (payload_orderlines))
         axios.put(`${API_Endpoint}/updatestock`, ({product_id: cart[i].product_id}))
 }        setPaid(!paid)

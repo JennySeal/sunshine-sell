@@ -17,12 +17,11 @@ const Account = () => {
     const dispatch = useDispatch()
 
     const getOrderHistory = useCallback(() => {
-        dispatch(emptyCartForSale(178))
+        dispatch(emptyCartForSale())
         axios.get(`${API_Endpoint}/orderhistory/${customer.data.customer_id}`).then(data => {
         setOrders(data.data.reverse())
         setGotOrders(true)
        }).catch(() => {
-            console.log('hello')
         })}, [customer.data.customer_id, dispatch])
 
     useEffect(() => {
@@ -36,7 +35,7 @@ const Account = () => {
             <br/>
             {!gotOrders ? <p>You have not ordered from Sunshine Stores before.</p> : 
                 orders.map((order) =>
-                    <div key={order.order_lines_id} className='rowFlex' id='orderHistory'>
+                    <div key={order.order_line_id} className='rowFlex' id='orderHistory'>
                     <h4>{new Date(order.date_of_order).toISOString().slice(0, 10)}</h4> 
                     <p>{order.name} - Price: {order.price}</p>
                     <img src={order.image} alt={order.name} className="orderImg" />

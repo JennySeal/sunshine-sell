@@ -48,7 +48,6 @@ const addUser = (req, res) => {
 
 
 const getOrderHistory = (req, res) => {
-    console.log(req.params.id)
     const customer_id = req.params.id;
     const customer_id_number = parseInt(customer_id, 10);
     pool.query('SELECT order_lines.order_line_id, order_lines.product_id, orders.date_of_order, products.name, products.image, products.price FROM order_lines INNER JOIN orders ON order_lines.order_id = orders.order_id INNER JOIN products ON order_lines.product_id = products.product_id WHERE order_lines.customer_id = $1', 
@@ -56,7 +55,6 @@ const getOrderHistory = (req, res) => {
         if (error) {
            throw error;
         }
-        console.log(results)
         res.status(200).json(results.rows)
     })
 }

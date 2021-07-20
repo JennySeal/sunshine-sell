@@ -7,7 +7,8 @@ import GetTotal from "./GetTotal";
 import "./../styles/cart.css";
 
 const Cart = () => {
-  const cart = useSelector(selectCart);
+  const cartData = useSelector(selectCart);
+  const cart = cartData.data;
   const customerDetails = useSelector(selectCustomer)
   const checkLogin = customerDetails.isLoggedin;    
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const Cart = () => {
         :
 
         totalPrice === "0.00" && 
-            <div>
+        <div className='pageContainer' id='cartContainer'>
             <p>
                 Oh no! There are no eco-items in your basket right now.
             </p>  

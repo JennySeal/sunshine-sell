@@ -5,7 +5,7 @@
 #orderHistory {
     align-items: center;
     justify-content: space-evenly;
-    width: 60vw;
+    width: 65vw;
     padding-bottom: var(--small-padding);
     border-bottom: 0.2vw solid var(--highlight-colour);
     font-size: 90%;
@@ -14,3 +14,30 @@
 #account    {
     align-items: flex-start;
 }
+
+
+@media (min-width: 1100px) {
+    #orderHistory {
+      width: 55vw;
+      font-size: 100%;
+      padding: 0;
+    }
+    #shipping   {
+        font-size: 100%;
+        padding: var(--small-padding);  
+    }
+  }
+
+
+
+
+
+@media (max-width: 600px) {
+    #orderHistory {
+      width: 75vw;
+      font-size: 80%;
+    }
+    .orderImg {
+        width: 8vw;
+    }
+  }
