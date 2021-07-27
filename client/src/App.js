@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import { selectCustomer } from "./slice_reducers/customerSlice";
 import { useSelector } from "react-redux";
 
-import "./styles/Index.css";
+import "./styles/index.css";
 
 import Header from "./components/Header";
 import Nav from "./components/Nav";
