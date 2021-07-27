@@ -11,7 +11,7 @@ require('./passport');
 const CORS_WHITELIST = require('./config/frontend')
 const corsOptions = {
   origin: (origin, callback) => 
-  (CORS_WHITELIST.indexOf(origin) !== -1) ? callback(null, true) : callback(new Error(`Not allowed by Cors: origin is ${origin} and callback is ${callback}`))
+  (CORS_WHITELIST.indexOf(origin) !== -1 || !origin) ? callback(null, true) : callback(new Error(`Not allowed by Cors: origin is ${origin} and callback is ${callback}`))
 }
 
 const postStripeCharge = res => (stripeError, stripeRes) => {
