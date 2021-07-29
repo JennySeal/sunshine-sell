@@ -37,7 +37,7 @@ const Cart = () => {
             <img src={cartItem.image} alt={cartItem.name} />
             <div id='productText'>
             <h4>{cartItem.name}</h4>
-            <p>price: {cartItem.cost_per_item}</p>
+            <p>price: £{cartItem.price}</p>
             <button type="button" onClick={() => {removeItem(cartItem);}}>Remove</button>
             </div>
             </div>
