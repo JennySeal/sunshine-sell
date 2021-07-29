@@ -18,4 +18,11 @@
   border-radius: var(--border-radius-inner);
 }
 
-
+@media (max-width: 500px) {
+  #cartItem {
+    width: 40vw;
+  }
+#cartItem img {
+    width: 35vw;
+  } 
+  }

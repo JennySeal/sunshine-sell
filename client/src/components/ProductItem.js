@@ -32,7 +32,7 @@ const ProductItem = () => {
         if (cart.length !== 0) {
             let i = 0;
             while (i < cart.length) {
-                if ((cart[i].product_id + 1) === productItem.product_id) {
+                if ((cart[i].name + 1) === productItem.name) {
                        setDuplicate(true)
                        return setDuplicate;
                 } else {
