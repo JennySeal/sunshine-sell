@@ -24,7 +24,7 @@ const Cart = () => {
 
     {(cart.length > 0) ? 
     <div className='pageContainer' id='cartContainer'>
-          <p>The cost of the eco-items in your shopping basket is <span className='boldOrange'>£{totalPrice}</span></p>.
+          <p>The cost of the eco-items in your shopping basket is <span className='boldOrange'>£{totalPrice}</span>.</p>
           <div id='inlineFlex'><Link to="/"><button>Keep Shopping</button></Link>
           {!checkLogin ? <Link to={{pathname:'/login', state: {fromCart: true}}}><button >Checkout</button></Link> :
           <Link to='/checkout'><button>Checkout</button></Link>}</div>

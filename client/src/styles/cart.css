@@ -25,4 +25,8 @@
 #cartItem img {
     width: 35vw;
   } 
+.rowFlex {
+  flex-direction: column;
+  justify-content: space-around;
+}
   }
