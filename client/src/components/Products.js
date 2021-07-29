@@ -43,7 +43,7 @@ const Products = () => {
                     }}>
                     <img src={product.image} alt={product.name} className="productImg" props={product.product_id}/>
                     <h3 className='boldOrange'>{product.name}</h3>
-                    <p>{product.cost_per_item}</p></Link>
+                    <p>£{product.price}</p></Link>
             </div>)}</div> : <h3 id="LoadingIcon">It's worth waiting for!</h3>}
               
       </div>

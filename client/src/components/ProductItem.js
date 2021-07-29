@@ -48,7 +48,7 @@ const ProductItem = () => {
             <h3>{productItem.name}</h3><br/>
             <h4>{productItem.description}</h4><br/>
             
-            <p>{productItem.cost_per_item} <br/>Items in stock: {productItem.items_in_stock}</p><br/>     
+            <p>£{productItem.price} <br/>Items in stock: {productItem.items_in_stock}</p><br/>     
             
             <form onSubmit={addToCart}>
             {cartButton && <button type="submit">Add to Cart</button>}
