@@ -100,7 +100,7 @@ const removeItem = (cartItem) => {
                           
                             <img src={cartItem.image} alt={cartItem.name} />
                             <div className='columnflex'>
-                            <p>price: {cartItem.cost_per_item}</p>
+                            <p>price: £{cartItem.price}</p>
                             <button type="button" id='removeCheckout' onClick={() => {removeItem(cartItem);}}>Remove</button>
                             </div>
                             </div>                   

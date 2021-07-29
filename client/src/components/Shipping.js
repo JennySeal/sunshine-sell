@@ -14,7 +14,7 @@ const Shipping = () => {
         <p>Your shipping address is:</p>
         {customerData ? 
             <div>
-            <p>{customerData.first_name} {customerData.surname},</p>
+            <p>{customerData.first_name} {customerData.surname}</p>
             <p>{customerData.address_line1}</p>
             {customerData.address_line2 && <p>{customerData.address_line2}</p>}
             <p>{customerData.town}</p>
