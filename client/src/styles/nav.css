@@ -48,3 +48,8 @@ nav {
     margin: var(--margin);
   }
   
+  @media (max-width: 500px) {
+  #cartCounter {
+    padding: 0vw 1.25vw;
+  }
+}
