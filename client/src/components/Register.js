@@ -38,7 +38,7 @@ const Register = () => {
 
         axios.post(`${API_Endpoint}/users`, (payload))
           .then(data=> {
-        dispatch(talkedToCustomerDb(payload))
+        dispatch(talkedToCustomerDb(data.data))
         })
           .catch(() => { 
                 dispatch(talkingToCustomerDbFailed())

@@ -15,6 +15,7 @@ const ProductItem = () => {
     const customerDetails = useSelector(selectCustomer)
     const checkLogin = customerDetails.isLoggedin;    
     const cart = useSelector(selectCart);
+    const cartData = cart.data;
 
     const [saleLinks, setSaleLinks] = useState(false);
     const [cartButton, setCartButton] = useState(true);   
@@ -24,15 +25,14 @@ const ProductItem = () => {
         e.preventDefault()
         setSaleLinks({saleLinks}) 
         setCartButton(!{cartButton})
-        
-        if (cart.length === 0) {
+        if (cartData.length === 0) {
             dispatch(addProductToCart(productItem))
             } 
             
-        if (cart.length !== 0) {
+        if (cartData.length !== 0) {
             let i = 0;
-            while (i < cart.length) {
-                if ((cart[i].name + 1) === productItem.name) {
+            while (i < cartData.length) {
+                if ((cartData[i].product_id) === productItem.product_id) {
                        setDuplicate(true)
                        return setDuplicate;
                 } else {
