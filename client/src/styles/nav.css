@@ -30,7 +30,7 @@ nav {
   #cartCounter {
     border: 3px solid var(--insideBackground);
     border-radius: 50%;
-    padding: 0vw var(--small-padding);
+    padding: 0vw 1.25vw;
     color: var(--lightBackground);
     margin: 0;
   }
@@ -48,8 +48,4 @@ nav {
     margin: var(--margin);
   }
   
-  @media (max-width: 500px) {
-  #cartCounter {
-    padding: 0vw 1.25vw;
-  }
-}
+ 
