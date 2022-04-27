@@ -18,6 +18,13 @@
   
 }
 
+.btn {
+    color: var(--lightBackground);
+}
+
+p {
+    margin: 0;
+}
 
 @media (max-width: 600px) {
     #shipping {
