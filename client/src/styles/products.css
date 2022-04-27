@@ -5,6 +5,8 @@
   align-items: flex-start;
   justify-content: space-evenly;
   font-size: 0.9rem;
+  text-decoration: none;
+
 }
 
 #productCard.card {
