@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { selectCustomer } from "./slice_reducers/customerSlice";
 import { useSelector } from "react-redux";
-
-import "./styles/index.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from "./components/Header";
 import Nav from "./components/Nav";
@@ -16,6 +15,7 @@ import Account from "./components/Account";
 import Footer from "./components/Footer";
 import FourOhFour from "./components/FourOhFour";
 import Register from "./components/Register";
+import './styles/index.css';
 
 
 const App = () => {

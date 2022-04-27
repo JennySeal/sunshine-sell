@@ -1,15 +1,15 @@
 import React from 'react';
-import Logo from './../logo.png';
 import './../styles/header.css';
+import Spinner from 'react-bootstrap/Spinner'
 
 const LoadingIcon = () => {
     return (
         <div id="LoadingIcon">
-        <p>Testing, testing, one, two, three! <br/>Sorry you are waiting</p>
-        <div className="App-logo">
-        <img className="loadingIcon" src={Logo} alt="Cool Spinning Logo"/> 
-        </div>
-        </div>
+        <h4>We are spinning up! Sorry you are waiting</h4>        
+  <Spinner animation="grow" variant="danger" />&nbsp;&nbsp;
+  <Spinner animation="border" variant="light" />&nbsp;&nbsp;
+  <Spinner animation="grow" variant="dark" />
+        </div> 
     )
 }
 

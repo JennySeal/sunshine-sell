@@ -24,7 +24,7 @@ h1 {
 
 h2 {
   font-family: "Inter", sans-serif;
-  color: orangered;
+  color: var(--highlight-colour);
   font-size: 150%;
   font-family: "Poppins", "Lato", sans-serif;
   padding-left: var(--padding);

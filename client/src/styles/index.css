@@ -1,16 +1,16 @@
 /* custom variables */
 
 :root {
-  --outsideBackground: #3ded97;
-  --insideBackground: #ffcc00;
-  --lightBackground: #fff2bf;
+  --outsideBackground: #11214e;
+  --insideBackground: #F1B814;
+  --lightBackground: white;
   --padding: 1vw;
   --margin: 1vw;
   --small-padding: 0.5vw;
   --small-margin: 0.5vw;
-  --font-color: darkslateblue;
-  --highlight-colour: orangered;
-  --box-shadow: 1px 1px 5px orangered;
+  --font-color: #1A2238;
+  --highlight-colour: #FF6A3D;
+  --box-shadow: 1px 1px 2px #BD1E51;
   --border-radius-outer: 20px;
   --border-radius-inner: 5px;
 }
@@ -22,21 +22,23 @@
 
 body {
   background-color: var(--outsideBackground);
-  font-family: "Poppins", "Lato", sans-serif;
+  font-family: "Roboto", "Lato", sans-serif;
   color: var(--font-color);
 }
 
 #mainContainer {
   width: 90vw;
-  min-height: 90vh;
+  min-height: 95vh;
   margin: 1vh 5vw;
-  border-radius: var(--border-radius-outer);
+  border-top-left-radius: var(--border-radius-outer);
+  border-top-right-radius: var(--border-radius-outer);
   background-color: var(--insideBackground);
   box-shadow: var(--box-shadow);
 }
 
 .innerContainer {
   width: 90vw;
+
 }
 
 img{
@@ -56,6 +58,7 @@ img{
   background-color: var(--lightBackground);
   border-radius: var(--border-radius-outer);
   box-shadow: var(--box-shadow);
+  overflow: scroll;
 }
 
 .card {
@@ -64,7 +67,7 @@ img{
   padding: var(--small-padding);
   justify-content: center;
   align-items: center;
-  background-color: whitesmoke;
+  background-color: white;
   border-radius: var(--border-radius-outer);
   margin: var(--margin);
   color: var(--highlight-colour);
@@ -94,18 +97,18 @@ img{
 }
 
 p {
-  font-family: 'Inter', 'Poppins', 'sans-serif';
+  font-family: 'Roboto', 'Poppins', 'sans-serif';
 }
 
 
 button {
-  font-family: "Inter", "Lato", sans-serif;
+  font-family: "Roboto", "Lato", sans-serif;
   padding: var(--small-padding);
   border: 0.5vw solid white;
   border-radius: var(--border-radius-inner);
   margin: var(--margin);
-  color: whitesmoke;
-  box-shadow: 0 0 30px 30px   darkslateblue inset, 0 0 0 0 darkslateblue;
+  color: white;
+  box-shadow: 0 0 30px 30px var(--font-color) inset, 0 0 0 0 var(--font-color);
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   background-color: var(--font-color);
@@ -113,7 +116,7 @@ button {
 
 button:hover {
   box-shadow: 0 0 20px 0 whitesmoke inset, 0 0 0px 4px white;
-  color: darkslateblue;
+  color: var(--font-color);
   background-color: var(--insideBackground);
   font-weight: 700;
 }
