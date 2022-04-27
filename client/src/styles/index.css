@@ -20,6 +20,11 @@
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   background-color: var(--outsideBackground);
   font-family: "Roboto", "Lato", sans-serif;
